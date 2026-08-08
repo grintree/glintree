@@ -234,3 +234,10 @@ INFO  2026-08-08T15:52:22.719 MainWindow::~MainWindow()
 INFO  2026-08-08T15:52:22.722 Task::~Task() 
 INFO  2026-08-08T15:52:22.722 TaskWebEngineView::~TaskWebEngineView() 
 INFO  2026-08-08T15:52:22.722 TaskWebEnginePage::~TaskWebEnginePage() 
+INFO  2026-08-08T15:53:46.123 initLogger() success logDir= "E:/Codes/QT-c++/glintree/build/Desktop_Qt_6_8_3_MSVC2022_64bit_Debug/release/logs" 
+INFO  2026-08-08T15:53:46.123 "Glintree V2.0,qwebengine V6.8.3 chromium V122.0.6261.171 chromiumSP V134.0.6998.89" 
+INFO  2026-08-08T15:53:46.124 MainWindow::MainWindow() screens.size= 1 ,screenW= 1707 ,screenH= 960 ,initW= 960 ,initH= 640 
+INFO  2026-08-08T15:53:46.127 Database.cpp succee to connect sqlite 
+INFO  2026-08-08T15:53:46.128 Database::setFinger finger= "5a6B5aSVLWViZjE0MTRlLTI1ZDYtNDhlNi1iOTcyLTNiZDQzZjU2YTUxYQ==" 
+INFO  2026-08-08T15:53:48.597 ApiCheckVersion::checkVersion url= "*/checkVersion?version=2.0&prettyProductName=Windows 11 Version 25H2&buildCpuArchitecture=x86_64&finger=5a6B5aSVLWViZjE0MTRlLTI1ZDYtNDhlNi1iOTcyLTNiZDQzZjU2YTUxYQ==&kernelType=winnt&bootUniqueId=&productVersion=11&machineUniqueId=ebf1414e-25d6-48e6-b972-3bd43f56a51a&machineHostName=宁夕&productType=windows&currentCpuArchitecture=x86_64&buildAbi=x86_64-little_endian-llp64&kernelVersion=10.0.26200" 
+INFO  2026-08-08T15:53:48.632 ApiCheckVersion::onRequestFinished state= false ,msg= "Protocol \"\" is unknown" 
