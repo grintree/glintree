@@ -98,7 +98,7 @@ void Index::initUI(){
 
     QPushButton *addTaskBtn = new QPushButton(taskWidget);
     addTaskBtn->setCursor(Qt::PointingHandCursor);
-    addTaskBtn->setFixedSize(110,50);
+    addTaskBtn->setFixedSize(130,50);
     addTaskBtn->setStyleSheet(m_stylesheet_QPushButton_hollow);
     addTaskBtn->setText("新建任务");
     addTaskBtn->setIcon(QIcon(":/res/images/icon/mainwindow/add.png"));

@@ -15,7 +15,7 @@
 const QString HOST = "*";           //保留服务器地址，为后续检查心跳以及探测指纹
 const bool    IS_reportHeart = true;
 
-const QString URL_OPENSOURCE = "https://gitee.com/mou-shi/grintree.git"; // 开源地址
+const QString URL_OPENSOURCE = "https://github.com/grintree/glintree.git"; // 开源地址
 
 const QString JS_QWEBCHANNEL_FILE = ":/res/js/lib/qwebchannel_release.js.txt";
 const QString JS_CUSTOMTASK_FILE = ":/res/js/customtask.js.txt";
