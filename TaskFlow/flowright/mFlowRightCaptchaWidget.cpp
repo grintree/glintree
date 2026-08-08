@@ -44,7 +44,7 @@ void MFlowRightCaptchaWidget::initInfoUI(){
     nameLine = new QLineEdit(infoWidget);
     nameLine->setStyleSheet(m_stylesheet_QLineEdit);
     nameLine->setText(m_params->name);
-    nameLine->setFixedWidth(160);
+    nameLine->setFixedSize(160,30);
 
     infoLayout->addWidget(nameLabel);
     infoLayout->addSpacing(20);
@@ -72,7 +72,7 @@ void MFlowRightCaptchaWidget::initSenierOptionUI(){
     QLabel *eleXpathLabel = new QLabel(optionBox->gWidget);
     eleXpathLabel->setText(tr("验证码图片Xpath"));
     eleXpathLine = new QLineEdit(optionBox->gWidget);
-    eleXpathLine->setMaximumWidth(180);
+    eleXpathLine->setMaximumWidth(300);
     eleXpathLine->setStyleSheet(m_stylesheet_QLineEdit);
     eleXpathLine->setText(m_params->eleXpath);
     eleXpathLine->setPlaceholderText("例如 //img[@id='captcha']");
@@ -83,7 +83,7 @@ void MFlowRightCaptchaWidget::initSenierOptionUI(){
     QLabel *inputXpathLabel = new QLabel(optionBox->gWidget);
     inputXpathLabel->setText(tr("验证码输入框Xpath"));
     inputXpathLine = new QLineEdit(optionBox->gWidget);
-    inputXpathLine->setMaximumWidth(180);
+    inputXpathLine->setMaximumWidth(300);
     inputXpathLine->setStyleSheet(m_stylesheet_QLineEdit);
     inputXpathLine->setText(m_params->inputXpath);
     inputXpathLine->setPlaceholderText("例如 //input[@id='code']");

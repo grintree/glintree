@@ -53,7 +53,7 @@ void MFlowRightMouseWidget::initInfoUI(){
 
     nameLine->setStyleSheet(m_stylesheet_QLineEdit);
     nameLine->setText(m_params->name);
-    nameLine->setFixedWidth(160);
+    nameLine->setFixedSize(160,30);
 
     infoLayout->addWidget(nameLabel);
     infoLayout->addSpacing(20);

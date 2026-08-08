@@ -46,7 +46,7 @@ TaskImport::TaskImport(QWidget *parent) : QDialog(parent)
     selectBtn->setText("选择...");
     selectBtn->setCursor(Qt::PointingHandCursor);
     selectBtn->setStyleSheet(m_stylesheet_QPushButton_hollow);
-    selectBtn->setFixedSize(90,28);
+    selectBtn->setFixedSize(90,30);
 
     connect(selectBtn,&QPushButton::clicked,this,[this,nameLine](){
        QString filename = QFileDialog::getOpenFileName(this,"选择任务文件","","*.ds");

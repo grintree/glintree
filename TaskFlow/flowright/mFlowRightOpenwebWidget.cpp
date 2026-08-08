@@ -65,6 +65,7 @@ void MFlowRightOpenWebWidget::initInfoUI(){
     nameLine = new QLineEdit(infoWidget);
     nameLine->setStyleSheet(m_stylesheet_QLineEdit);
     nameLine->setText(m_params->name);
+    nameLine->setFixedSize(160,30);
 
     QLabel *overtimeLabel = new QLabel(infoWidget);
     overtimeLabel->setStyleSheet(m_stylesheet_QLabel);

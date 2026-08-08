@@ -47,6 +47,7 @@ void MFlowRightSwitchWidget::initInfoUI(){
     nameLine = new QLineEdit(infoWidget);
     nameLine->setStyleSheet(m_stylesheet_QLineEdit);
     nameLine->setText(m_params->name);
+    nameLine->setFixedSize(160,30);
 
     infoLayout->addWidget(nameLabel,0,0);
     infoLayout->addWidget(nameLine,0,1);

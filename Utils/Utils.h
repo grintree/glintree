@@ -1,4 +1,4 @@
-﻿#ifndef UTILS_H
+#ifndef UTILS_H
 #define UTILS_H
 #include <chrono>
 #include <QDir>
@@ -89,15 +89,15 @@ public:
         if(!dir.exists()){
             dir.mkpath(".");
         }
-        if(!QFile::exists(htmlPath)){
-            QFile res(":/res/web/update-2.0-summary.html");
-            if(res.open(QIODevice::ReadOnly)){
-                QFile out(htmlPath);
-                if(out.open(QIODevice::WriteOnly)){
-                    out.write(res.readAll());
-                    out.close();
-                }
-                res.close();
+        // 每次打开前都用资源中的最新内容覆盖本地缓存，保证修改HTML后无需手动清理旧文件
+        QFile res(":/res/web/update-2.0-summary.html");
+        if(res.open(QIODevice::ReadOnly)){
+            QByteArray htmlData = res.readAll();
+            res.close();
+            QFile out(htmlPath);
+            if(out.open(QIODevice::WriteOnly | QIODevice::Truncate)){
+                out.write(htmlData);
+                out.close();
             }
         }
         QDesktopServices::openUrl(QUrl::fromLocalFile(htmlPath));

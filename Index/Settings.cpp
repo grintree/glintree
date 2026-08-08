@@ -67,12 +67,12 @@ void Settings::initUi(){
 
     // 版本检测更新 start
     QWidget *versionWidget = new QWidget(settingsWidget);
-    versionWidget->setFixedHeight(45);
+    versionWidget->setFixedHeight(50);
     QHBoxLayout *versionHLayout = new QHBoxLayout(versionWidget);
     versionHLayout->setContentsMargins(0,0,0,0);
     versionHLayout->setSpacing(0);
     QPushButton *checkBtn = new QPushButton(versionWidget);
-    checkBtn->setFixedSize(80,28);
+    checkBtn->setFixedSize(120,35);
     checkBtn->setStyleSheet(m_stylesheet_QPushButton_hollow);
     checkBtn->setCursor(Qt::PointingHandCursor);
     checkBtn->setText("检查更新");
@@ -102,13 +102,13 @@ void Settings::initUi(){
 
     // 清空缓存 start
     QWidget *clearCacheWidget = new QWidget(settingsWidget);
-    clearCacheWidget->setFixedHeight(45);
+    clearCacheWidget->setFixedHeight(50);
     QHBoxLayout *clearCacheHLayout = new QHBoxLayout(clearCacheWidget);
     clearCacheHLayout->setContentsMargins(0,0,0,0);
     clearCacheHLayout->setSpacing(0);
 
     QPushButton * clearCacheBtn = new QPushButton(clearCacheWidget);
-    clearCacheBtn->setFixedSize(80,28);
+    clearCacheBtn->setFixedSize(120,35);
     clearCacheBtn->setStyleSheet(m_stylesheet_QPushButton_hollow);
     clearCacheBtn->setCursor(Qt::PointingHandCursor);
     clearCacheBtn->setText("清空缓存");
@@ -142,7 +142,7 @@ void Settings::initUi(){
     proxyHLayout->setSpacing(0);
 
     QPushButton * proxyBtn = new QPushButton(proxyWidget);
-    proxyBtn->setFixedSize(80,28);
+    proxyBtn->setFixedSize(120,35);
     proxyBtn->setStyleSheet(m_stylesheet_QPushButton_hollow);
     proxyBtn->setCursor(Qt::PointingHandCursor);
     proxyBtn->setText("代理");

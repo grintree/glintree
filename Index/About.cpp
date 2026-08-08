@@ -76,12 +76,13 @@ void About::initTopUi(){
     smLabel->setText("声明");
 
     QLabel *smContentLabel = new QLabel(smWidget);
-    smContentLabel->setFixedWidth(500);
+    smContentLabel->setFixedWidth(520);
 //    smContentLabel->setGeometry(QRect(328, 240, 329, 27*4)); //四倍行距
     smContentLabel->setWordWrap(true);
-    smContentLabel->setText(tr("<p style='font-family:Microsoft YaHei;font-size:18px;margin:10px;line-height:25px;'>本产品只是采集数据的工具,我们不对数据版权负责。我们尊重版权,您必须在采集之前联系数据所有者取得授权,"
+    smContentLabel->setText(tr("<p style='font-family:Microsoft YaHei;font-size:18px;margin:10px;line-height:25px;'>"
+                            "本产品只是采集数据的工具,我们不对数据版权负责。我们尊重版权,您必须在采集之前联系数据所有者取得授权,"
                             "任何因数据授权产生的问题由使用者负生部责任,另外对于数据的使用请严格遭守《国家网络安全法》,"
-                            "使用本软件即代表悠同意此声明</p>"));
+                            "使用本软件即代表您同意此声明</p>"));
     smHLayout->addSpacing(20);
     smHLayout->addWidget(smLabel,0,Qt::AlignCenter);
     smHLayout->addSpacing(10);
@@ -135,7 +136,7 @@ void About::initSoftwareUi(){
 
     // 开源地址 start
     QWidget *osWidget = new QWidget(softwareWidget);// 开源地址
-    osWidget->setFixedHeight(20);
+    osWidget->setFixedHeight(25);
     QHBoxLayout *osHLayout = new QHBoxLayout(osWidget);
     osHLayout->setContentsMargins(0,0,0,0);
 

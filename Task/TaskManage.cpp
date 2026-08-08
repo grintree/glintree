@@ -101,7 +101,7 @@ void TaskManage::initTopMenuUi(){
     importBtn->setCursor(Qt::PointingHandCursor);
     importBtn->setStyleSheet(m_stylesheet_QPushButton_hollow);
     importBtn->setText("导入任务");
-    importBtn->setFixedSize(90,28);
+    importBtn->setFixedSize(130,28);
     connect(importBtn,&QPushButton::clicked,this,[this](){
         TaskImport dlg(this);
         dlg.exec();

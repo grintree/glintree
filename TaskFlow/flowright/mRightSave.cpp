@@ -12,7 +12,7 @@ MRightSave::MRightSave(QWidget *parent) : QWidget(parent)
     QPushButton *saveBtn = new QPushButton(this);
     saveBtn->setText("保存属性");
     saveBtn->setStyleSheet(m_stylesheet_QPushButton_blue);
-    saveBtn->setFixedSize(80,28);
+    saveBtn->setFixedSize(120,28);
     saveBtn->setCursor(Qt::PointingHandCursor);
     connect(saveBtn,&QPushButton::clicked,this,[this,saveBtn](bool clicked){
         emit this->notifySave(clicked);

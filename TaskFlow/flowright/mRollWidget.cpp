@@ -20,7 +20,7 @@ MRollWidget::MRollWidget(QWidget *parent) :
     rollCountLabel->setText("滚动次数");
     rollCountSpin = new QSpinBox(this);
     rollCountSpin->setStyleSheet(m_stylesheet_QSpinBox);
-    rollCountSpin->setFixedWidth(40);
+    rollCountSpin->setFixedWidth(70);
 
     QLabel *rollIntervalLabel = new QLabel(this);
     rollIntervalLabel->setStyleSheet(m_stylesheet_QLabel12);
@@ -30,7 +30,7 @@ MRollWidget::MRollWidget(QWidget *parent) :
     rollIntervalSpin->setMinimum(0);
     rollIntervalSpin->setMaximum(30);
     rollIntervalSpin->setSuffix("秒");
-    rollIntervalSpin->setFixedWidth(50);
+    rollIntervalSpin->setFixedWidth(70);
 
     QLabel *rollTypeLabel = new QLabel(this);
     rollTypeLabel->setStyleSheet(m_stylesheet_QLabel12);

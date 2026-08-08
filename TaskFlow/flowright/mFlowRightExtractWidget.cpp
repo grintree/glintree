@@ -163,7 +163,7 @@ void MFlowRightExtractWidget::initInfoUI(){
 
     nameLine->setStyleSheet(m_stylesheet_QLineEdit);
     nameLine->setText(m_params->name);
-    nameLine->setFixedWidth(160);
+    nameLine->setFixedSize(120,30);
 
     infoLayout->addWidget(nameLabel);
     infoLayout->addSpacing(20);
@@ -207,7 +207,7 @@ void MFlowRightExtractWidget::initFieldsUI(){
     addFieldBtn->setCursor(Qt::PointingHandCursor);
     addFieldBtn->setText(tr("添加字段"));
     addFieldBtn->setStyleSheet(m_stylesheet_QPushButton_hollow);
-    addFieldBtn->setFixedSize(80,22);
+    addFieldBtn->setFixedSize(120,30);
     menuLayout->addWidget(addFieldBtn,0,Qt::AlignLeft);
 
 
