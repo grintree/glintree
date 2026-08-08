@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>13 · 8-bit 像素</title>
+<style>
+:root{--bg:#2D1B4E;--panel:#3B2564;--panel2:#4A2F7E;--line:#1B0F33;--yellow:#FFD23F;--mint:#59C9A5;--pink:#FF6B9D;--text:#FFF6E5;--muted:#C9B8E8;--pix:4px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Courier New",monospace;background:#221238;color:var(--text);height:100vh;display:flex;align-items:center;justify-content:center}
+body::before{content:"";position:fixed;inset:0;background-image:radial-gradient(rgba(255,255,255,.12) 1px,transparent 1px);background-size:14px 14px;pointer-events:none;z-index:1}
+.desktop{position:relative;z-index:2;width:1180px;height:760px;background:var(--bg);border:4px solid var(--line);box-shadow:0 0 0 4px var(--yellow),0 18px 0 rgba(0,0,0,.4);image-rendering:pixelated;display:flex;flex-direction:column}
+.titlebar{height:44px;background:var(--panel);border-bottom:4px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:14px;font-weight:700;letter-spacing:1px;text-shadow:2px 2px 0 var(--line)}
+.pixbtns{display:flex;gap:4px}
+.pixbtns i{width:18px;height:18px;background:var(--yellow);border:3px solid var(--line);box-shadow:inset -3px -3px 0 rgba(0,0,0,.3)}
+.pixbtns i:nth-child(2){background:var(--mint)}.pixbtns i:nth-child(3){background:var(--pink)}
+.body{flex:1;display:grid;grid-template-columns:230px 1fr;min-height:0}
+.side{background:var(--panel);border-right:4px solid var(--line);padding:14px 10px;display:flex;flex-direction:column}
+.logo{font-size:19px;font-weight:700;color:var(--yellow);text-shadow:3px 3px 0 var(--line);padding:8px 6px 16px;letter-spacing:2px}
+.nav a{display:block;padding:10px 12px;margin-bottom:8px;background:var(--panel2);border:3px solid var(--line);box-shadow:3px 3px 0 var(--line);color:var(--muted);text-decoration:none;font-size:13px;font-weight:700}
+.nav a.on{background:var(--yellow);color:#2D1B4E}
+.nav a:hover{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--line)}
+.side .foot{margin-top:auto;background:var(--panel2);border:3px solid var(--line);padding:10px;font-size:11px;color:var(--muted);text-align:center;box-shadow:3px 3px 0 var(--line)}
+.main{display:flex;flex-direction:column;gap:12px;padding:12px;min-width:0}
+.toolbar{height:56px;background:var(--panel);border:3px solid var(--line);box-shadow:3px 3px 0 var(--line);display:flex;align-items:center;gap:10px;padding:0 12px}
+.toolbar input{flex:1;max-width:300px;height:32px;background:var(--bg);border:3px solid var(--line);color:var(--text);padding:0 10px;font-family:inherit;font-size:13px}
+.btn{height:32px;padding:0 14px;background:var(--panel2);border:3px solid var(--line);box-shadow:3px 3px 0 var(--line);color:var(--text);font-family:inherit;font-size:12px;font-weight:700;cursor:pointer}
+.btn.hot{background:var(--mint);color:#1A3A2E}
+.btn.yellow{background:var(--yellow);color:#2D1B4E}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--line)}
+.workspace{flex:1;display:grid;grid-template-columns:280px 1fr;gap:12px;min-height:0}
+.flow{background:var(--panel);border:3px solid var(--line);box-shadow:3px 3px 0 var(--line);padding:14px;overflow:auto}
+.flow h3{font-size:12px;letter-spacing:2px;color:var(--yellow);margin-bottom:12px;text-shadow:2px 2px 0 var(--line)}
+.step{position:relative;background:var(--panel2);border:3px solid var(--line);box-shadow:3px 3px 0 var(--line);padding:10px 12px;margin-bottom:10px;font-size:13px;font-weight:700}
+.step small{display:block;color:var(--muted);font-size:10px;margin-top:4px;font-weight:400}
+.step.on{background:var(--yellow);color:#2D1B4E}
+.step.on small{color:#6B5212}
+.arrow{text-align:center;color:var(--muted);font-size:12px;margin:-4px 0;text-shadow:1px 1px 0 var(--line)}
+.browser{display:flex;flex-direction:column;background:var(--panel);border:3px solid var(--line);box-shadow:3px 3px 0 var(--line);overflow:hidden}
+.addr{height:44px;display:flex;align-items:center;gap:10px;padding:0 12px;background:var(--panel2);border-bottom:3px solid var(--line)}
+.addr .field{flex:1;height:28px;background:var(--bg);border:3px solid var(--line);display:flex;align-items:center;padding:0 10px;font-size:11px;color:var(--muted)}
+.page{flex:1;padding:22px;overflow:auto;background-image:linear-gradient(45deg,var(--bg) 25%,transparent 25%,transparent 75%,var(--bg) 75%),linear-gradient(45deg,var(--bg) 25%,#33204F 25%,#33204F 75%,var(--bg) 75%);background-size:32px 32px;background-position:0 0,16px 16px}
+.page h2{font-size:22px;color:var(--yellow);text-shadow:3px 3px 0 var(--line)}
+.page .crumb{font-size:11px;color:var(--muted);margin:8px 0 20px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--panel);border:3px solid var(--line);box-shadow:4px 4px 0 var(--line);padding:14px}
+.card .p{height:62px;background:var(--panel2);border:3px solid var(--line);margin-bottom:10px;position:relative}
+.card .p::after{content:"";position:absolute;inset:8px;background:linear-gradient(45deg,var(--pink) 50%,var(--mint) 50%)}
+.card b{font-size:14px}
+.card span{display:block;font-size:11px;color:var(--muted);margin-top:4px}
+.statusbar{height:30px;background:var(--panel);border-top:4px solid var(--line);display:flex;align-items:center;gap:18px;padding:0 14px;font-size:11px;color:var(--muted)}
+.sw{display:inline-block;width:14px;height:14px;border:2px solid var(--line);margin-left:4px;vertical-align:middle;box-shadow:2px 2px 0 var(--line)}
+</style>
+</head>
+<body>
+<div class="desktop">
+  <div class="titlebar"><span>GLINTREE ▸ 8-BIT</span><div class="pixbtns"><i></i><i></i><i></i></div></div>
+  <div class="body">
+    <aside class="side">
+      <div class="logo">GLINTREE</div>
+      <nav class="nav"><a href="#">首页</a><a href="#" class="on">任务编排</a><a href="#">任务管理</a><a href="#">数据查看</a><a href="#">设置</a></nav>
+      <div class="foot">HP ▓▓▓▓░░ 42%<br>DB █ SQLITE<br>STATUS: IDLE</div>
+    </aside>
+    <div class="main">
+      <div class="toolbar">
+        <input value="新品价格采集任务">
+        <span style="flex:1"></span>
+        <button class="btn">保存</button>
+        <button class="btn yellow">执行</button>
+        <button class="btn">设置</button>
+      </div>
+      <div class="workspace">
+        <section class="flow">
+          <h3>▸ FLOW</h3>
+          <div class="step on">打开网页<small>example.com/list</small></div>
+          <div class="arrow">▼</div>
+          <div class="step">循环：网址列表<small>3 条</small></div>
+          <div class="arrow">▼</div>
+          <div class="step">点击元素<small>A 商品链接</small></div>
+          <div class="arrow">▼</div>
+          <div class="step">提取数据<small>字段 x3</small></div>
+        </section>
+        <section class="browser">
+          <div class="addr"><span>♥</span><span class="field">https://www.example.com/list</span><span style="font-size:11px;color:var(--muted)">刷新</span></div>
+          <div class="page">
+            <h2>商品列表</h2>
+            <div class="crumb">首页 / 数码 / 新品</div>
+            <div class="cards">
+              <div class="card"><div class="p"></div><b>无线降噪耳机</b><span>¥ 899 · 128</span></div>
+              <div class="card"><div class="p"></div><b>智能手表 Pro</b><span>¥ 1,299 · 86</span></div>
+              <div class="card"><div class="p"></div><b>便携投影仪</b><span>¥ 2,099 · 54</span></div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="statusbar"><span>● 任务空闲</span><span>已采集 0 条</span><span style="flex:1"></span><span>令牌：紫 <i class="sw" style="background:#2D1B4E"></i> 黄 <i class="sw" style="background:#FFD23F"></i> 薄荷 <i class="sw" style="background:#59C9A5"></i> · 4px 硬边 · 块状阴影</span></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

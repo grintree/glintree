@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glintree V2.0 更新说明</title>
+  <style>
+    :root {
+      --bg: #F5F5F7;
+      --card: #FFFFFF;
+      --line: #E5E5EA;
+      --text: #1D1D1F;
+      --muted: #86868B;
+      --blue: #0A84FF;
+      --blue-soft: rgba(10, 132, 255, .10);
+      --green: #34C759;
+      --r: 12px
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+      background: linear-gradient(180deg, #EEEEF3, #E4E4EB);
+      color: var(--text);
+      padding: 36px 20px 60px
+    }
+
+    .wrap {
+      max-width: 1000px;
+      margin: 0 auto
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0A84FF, #5E5CE6);
+      border-radius: 20px;
+      padding: 34px 38px;
+      color: #fff;
+      box-shadow: 0 18px 44px rgba(10, 132, 255, .28);
+      margin-bottom: 26px
+    }
+
+    .hero .tag {
+      display: inline-block;
+      background: rgba(255, 255, 255, .22);
+      border: 1px solid rgba(255, 255, 255, .4);
+      border-radius: 999px;
+      padding: 4px 14px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      margin-bottom: 14px
+    }
+
+    .hero h1 {
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: -.5px
+    }
+
+    .hero p {
+      margin-top: 10px;
+      font-size: 15px;
+      color: rgba(255, 255, 255, .85);
+      line-height: 1.7
+    }
+
+    .hero .ver {
+      margin-top: 16px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, .7)
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      gap: 16px
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      padding: 20px 22px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, .05)
+    }
+
+    .card.wide {
+      grid-column: 1/-1
+    }
+
+    .card h2 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 12px
+    }
+
+    .card h2 .ico {
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+      background: var(--blue-soft);
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex: none
+    }
+
+    .card ul {
+      list-style: none
+    }
+
+    .card li {
+      position: relative;
+      padding: 7px 0 7px 24px;
+      font-size: 14px;
+      line-height: 1.65;
+      color: #3A3A3C;
+      border-bottom: 1px solid #F2F2F7
+    }
+
+    .card li:last-child {
+      border-bottom: 0
+    }
+
+    .card li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 7px;
+      color: var(--green);
+      font-weight: 700
+    }
+
+    .card .sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 10px;
+      line-height: 1.7
+    }
+
+    .card .pill {
+      display: inline-block;
+      background: var(--blue-soft);
+      color: var(--blue);
+      border-radius: 999px;
+      padding: 2px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      margin: 2px 4px 2px 0
+    }
+
+    .foot {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted)
+    }
+
+    .foot b {
+      color: var(--text)
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <span class="tag">RELEASE NOTES</span>
+      <h1>Glintree V2.0 更新说明</h1>
+      <p>本次更新围绕「macOS 风格界面重构」展开，同时修复数据库问题、补齐流程编辑器半成品功能、放大全局字体，并完成全套构建修复。以下为本版本全部更新内容汇总。</p>
+      <div class="ver">发布日期：2026-08</div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2><span class="ico">◐</span>整体视觉</h2>
+        <ul>
+          <li>全局底色切换为 macOS 浅灰 #F5F5F7</li>
+          <li>强调色统一为系统蓝 #0A84FF</li>
+          <li>全局圆角 8px、细边框、柔和阴影</li>
+          <li>字体改为 Microsoft YaHei UI 并整体放大两级</li>
+          <li>界面根据屏幕分辨率与 DPI 自动缩放，适配不同电脑屏幕</li>
+          <li>应用图标统一使用项目根目录 logo.ico</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2><span class="ico">☷</span>数据查看</h2>
+        <ul>
+          <li>数据表格、执行日志、分页条统一 macOS 风格</li>
+          <li>导出数据弹窗（Excel/CSV）同步更新</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2><span class="ico">✎</span>功能补齐</h2>
+        <ul>
+          <li>点击元素：Ajax 加载、页面加速、锚点、自动重试</li>
+          <li>打开网页：自定义 Cookie、清缓存、超时重试</li>
+          <li>新增验证码步骤（截图 + 手动输入）</li>
+          <li>新增下拉切换、判断条件、结束循环、结束</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2><span class="ico">▣</span>问题修复</h2>
+        <ul>
+          <li>清空任务数据判断逻辑修复</li>
+          <li>QWebEngineProfile 未定义类型修复</li>
+          <li>嵌套 lambda 捕获错误修复（MSVC）</li>
+          <li>MSVC + Qt 6.8.3 全量编译链接通过</li>
+        </ul>
+      </div>
+      <div class="card wide">
+        <h2><span class="ico">◆</span>涉及的功能展示块清单</h2>
+        <span class="pill">首页</span><span class="pill">任务编排</span>
+        <span class="pill">流程步骤</span>
+        <span class="pill">浏览器区域</span>
+        <span class="pill">属性面板</span>
+          <span class="pill">任务管理</span>
+          <span class="pill">数据查看</span>
+          <span class="pill">执行日志</span>
+          <span class="pill">分页条</span>
+          <span class="pill">设置</span>
+          <span class="pill">关于</span>
+          <span class="pill">启动设置弹窗</span>
+          <span class="pill">导出数据弹窗</span>
+          <span class="pill">验证码弹窗</span>
+          <span class="pill">消息框</span>
+          <span class="pill">菜单</span>
+          <span class="pill">工具栏</span>
+          <span class="pill">表格</span>
+          <span class="pill">滚动条</span>
+          <span class="pill">复选框</span>
+          <span class="pill">进度条</span>
+          <span class="pill">工具提示</span>
+      </div>
+    </div>
+
+    <div class="foot">Glintree <b>V2.0</b> · 已经上传github，完全开源</div>
+  </div>
+</body>
+
+</html>

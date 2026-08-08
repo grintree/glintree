@@ -1,0 +1,199 @@
+/* ============================================================
+   Glintree · macOS 风格全局样式
+   基础底色 / 菜单 / 输入控件 / 表格 / 滚动条 / 提示
+   ============================================================ */
+QWidget {
+    font-family: "Microsoft YaHei UI", "Microsoft YaHei";
+    font-size:17px;
+    color: rgb(29,29,31);
+}
+QMainWindow, QDialog {
+    background-color: rgb(245,245,247);
+}
+
+/* ---------- 菜单 ---------- */
+QMenu {
+    background-color: rgb(255,255,255);
+    border: 1px solid rgb(209,209,214);
+    border-radius: 8px;
+    padding: 6px;
+}
+QMenu::item {
+    color: rgb(29,29,31);
+    padding: 6px 26px;
+    border-radius: 6px;
+}
+QMenu::item:selected {
+    background-color: rgb(10,132,255);
+    color: rgb(255,255,255);
+}
+QMenu::item:pressed {
+    background-color: rgb(0,106,224);
+}
+QMenu::separator {
+    height: 1px;
+    background: rgb(229,229,234);
+    margin: 4px 10px;
+}
+
+/* ---------- 工具提示 ---------- */
+QToolTip {
+    background-color: rgb(44,44,46);
+    color: rgb(255,255,255);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* ---------- 滚动条 ---------- */
+QScrollBar:vertical {
+    background: transparent;
+    width: 8px;
+    margin: 2px;
+}
+QScrollBar::handle:vertical {
+    background: rgb(199,199,204);
+    border-radius: 4px;
+    min-height: 24px;
+}
+QScrollBar::handle:vertical:hover, QScrollBar::handle:vertical:pressed {
+    background: rgb(174,174,178);
+}
+QScrollBar:horizontal {
+    background: transparent;
+    height: 8px;
+    margin: 2px;
+}
+QScrollBar::handle:horizontal {
+    background: rgb(199,199,204);
+    border-radius: 4px;
+    min-width: 24px;
+}
+QScrollBar::handle:horizontal:hover, QScrollBar::handle:horizontal:pressed {
+    background: rgb(174,174,178);
+}
+QScrollBar::add-line, QScrollBar::sub-line {
+    width: 0;
+    height: 0;
+    background: transparent;
+}
+QScrollBar::add-page, QScrollBar::sub-page {
+    background: transparent;
+}
+
+/* ---------- 按钮 ---------- */
+QPushButton {
+    background-color: rgb(255,255,255);
+    border: 1px solid rgb(209,209,214);
+    border-radius: 8px;
+    padding: 5px 14px;
+}
+QPushButton:hover {
+    background-color: rgb(242,242,247);
+}
+QPushButton:pressed {
+    background-color: rgb(229,229,234);
+}
+QPushButton:disabled {
+    color: rgb(174,174,178);
+    background-color: rgb(242,242,247);
+}
+QPushButton:focus {
+    outline: none;
+}
+
+/* ---------- 输入控件 ---------- */
+QLineEdit, QTextEdit, QSpinBox, QComboBox {
+    background-color: rgb(255,255,255);
+    border: 1px solid rgb(209,209,214);
+    border-radius: 8px;
+    padding: 4px 10px;
+    selection-background-color: rgb(10,132,255);
+    selection-color: rgb(255,255,255);
+}
+QLineEdit:hover, QTextEdit:hover, QSpinBox:hover, QComboBox:hover {
+    border-color: rgb(174,174,178);
+}
+QLineEdit:focus, QTextEdit:focus, QSpinBox:focus, QComboBox:focus {
+    border: 1px solid rgb(10,132,255);
+}
+QComboBox::drop-down {
+    border: none;
+    width: 22px;
+}
+QComboBox QAbstractItemView {
+    background-color: rgb(255,255,255);
+    border: 1px solid rgb(209,209,214);
+    border-radius: 8px;
+    padding: 4px;
+    outline: 0px;
+}
+QComboBox QAbstractItemView::item {
+    height: 28px;
+    border-radius: 6px;
+}
+QComboBox QAbstractItemView::item:selected {
+    background-color: rgb(10,132,255);
+    color: rgb(255,255,255);
+}
+
+/* ---------- 表格 ---------- */
+QTableWidget {
+    background-color: rgb(255,255,255);
+    border: 1px solid rgb(229,229,234);
+    border-radius: 8px;
+    gridline-color: rgb(242,242,247);
+    selection-background-color: rgba(10,132,255,0.15);
+    selection-color: rgb(29,29,31);
+}
+QHeaderView::section {
+    background-color: rgb(245,245,247);
+    color: rgb(134,134,139);
+    border: none;
+    border-bottom: 1px solid rgb(229,229,234);
+    padding: 8px;
+    font-weight: 600;
+}
+
+/* ---------- 列表 ---------- */
+QListWidget {
+    background-color: rgb(255,255,255);
+    border: 1px solid rgb(229,229,234);
+    border-radius: 8px;
+}
+QListWidget::item {
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+QListWidget::item:selected {
+    background-color: rgba(10,132,255,0.15);
+    color: rgb(29,29,31);
+}
+
+/* ---------- 进度条 / 复选框 ---------- */
+QProgressBar {
+    background-color: rgb(229,229,234);
+    border: none;
+    border-radius: 3px;
+    text-align: center;
+}
+QProgressBar::chunk {
+    background-color: rgb(10,132,255);
+    border-radius: 3px;
+}
+QCheckBox::indicator {
+    width: 16px;
+    height: 16px;
+    border: 1px solid rgb(199,199,204);
+    border-radius: 4px;
+    background: rgb(255,255,255);
+}
+QCheckBox::indicator:checked {
+    background: rgb(10,132,255);
+    border-color: rgb(10,132,255);
+}
+
+/* ---------- 消息框 ---------- */
+QMessageBox {
+    background-color: rgb(255,255,255);
+}

@@ -1,0 +1,75 @@
+QMAKE_CXX.QT_COMPILER_STDCXX = 199711L
+QMAKE_CXX.QMAKE_MSC_VER = 1941
+QMAKE_CXX.QMAKE_MSC_FULL_VER = 194134120
+QMAKE_CXX.COMPILER_MACROS = \
+    QT_COMPILER_STDCXX \
+    QMAKE_MSC_VER \
+    QMAKE_MSC_FULL_VER
+QMAKE_CXX.INCDIRS = \
+    E:/VisualStuidio/Community/VC/Tools/MSVC/14.41.34120/include \
+    E:/VisualStuidio/Community/VC/Tools/MSVC/14.41.34120/ATLMFC/include \
+    E:/VisualStuidio/Community/VC/Auxiliary/VS/include \
+    "C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/ucrt" \
+    "C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/um" \
+    "C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/shared" \
+    "C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/winrt" \
+    "C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/cppwinrt" \
+    "C:/Program Files (x86)/Windows Kits/NETFXSDK/4.8/include/um"
+QMAKE_CXX.LIBDIRS = \
+    E:/VisualStuidio/Community/VC/Tools/MSVC/14.41.34120/lib/ARM64 \
+    "C:/Program Files (x86)/Windows Kits/10/lib/10.0.26100.0/ucrt/arm64" \
+    "C:/Program Files (x86)/Windows Kits/10/lib/10.0.26100.0/um/arm64"
+QMAKE_CXX.PATH = \
+    E:/VisualStuidio/Community/VC/Tools/MSVC/14.41.34120/bin/HostX64/x64 \
+    E:/VisualStuidio/Community/Common7/IDE/VC/VCPackages \
+    E:/VisualStuidio/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow \
+    "E:/VisualStuidio/Community/Common7/IDE/CommonExtensions/Microsoft/TeamFoundation/Team Explorer" \
+    E:/VisualStuidio/Community/MSBuild/Current/bin/Roslyn \
+    "C:/Program Files (x86)/Microsoft SDKs/Windows/v10.0A/bin/NETFX 4.8 Tools/x64" \
+    "C:/Program Files (x86)/HTML Help Workshop" \
+    E:/VisualStuidio/Community/Common7/IDE/CommonExtensions/Microsoft/FSharp/Tools \
+    "E:/VisualStuidio/Community/Team Tools/DiagnosticsHub/Collector" \
+    "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64" \
+    "C:/Program Files (x86)/Windows Kits/10/bin/x64" \
+    E:/VisualStuidio/Community/MSBuild/Current/Bin/amd64 \
+    C:/Windows/Microsoft.NET/Framework64/v4.0.30319 \
+    E:/VisualStuidio/Community/Common7/IDE \
+    E:/VisualStuidio/Community/Common7/Tools \
+    "C:/Program Files (x86)/Common Files/Oracle/Java/java8path" \
+    "C:/Program Files (x86)/Common Files/Oracle/Java/javapath" \
+    E:/VMware/bin \
+    C:/Windows/system32 \
+    C:/Windows \
+    C:/Windows/System32/Wbem \
+    C:/Windows/System32/WindowsPowerShell/v1.0 \
+    C:/Windows/System32/OpenSSH \
+    "C:/Program Files/Redis" \
+    E:/androidsdk/platform-tools \
+    D:/Java/jdk-1.8/bin \
+    "C:/Program Files/CMake/bin" \
+    "C:/Program Files/Microsoft SQL Server/150/Tools/Binn" \
+    C:/Users/34951/vcpkg \
+    "C:/Program Files/MySQL/MySQL Server 8.0/bin" \
+    E:/QT/6.6.3/mingw_64/bin \
+    "C:/Program Files/dotnet" \
+    "C:/Program Files (x86)/Incredibuild" \
+    "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit" \
+    E:/QT/6.6.3/msvc2019_64/bin \
+    "C:/Program Files/nodejs" \
+    E:/xshell \
+    E:/xftp \
+    "C:/Program Files/Git/cmd" \
+    E:/Tencent/???web?????????/dll \
+    E:/vcpkg \
+    C:/Users/34951/AppData/Local/Programs/Python/Python311/Scripts \
+    C:/Users/34951/AppData/Local/Programs/Python/Python311 \
+    C:/Users/34951/AppData/Local/Microsoft/WindowsApps \
+    "E:/Microsoft VS Code/bin" \
+    "E:/PyCharm 2024.1.4/bin" \
+    C:/Users/34951/.dotnet/tools \
+    C:/Users/34951/AppData/Roaming/npm \
+    C:/Users/34951/AppData/Local/Pandoc \
+    E:/VisualStuidio/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin \
+    E:/VisualStuidio/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja \
+    E:/VisualStuidio/Community/Common7/IDE/VC/Linux/bin/ConnectionManagerExe \
+    E:/VisualStuidio/Community/VC/vcpkg

@@ -1,0 +1,10 @@
+INFO  2026-08-08T12:34:17.712 initLogger() success logDir= "E:/Codes/QT-c++/glintree/build/verify-msvc/release/logs" 
+INFO  2026-08-08T12:34:17.712 "Glintree V1.9,qwebengine V6.8.3 chromium V122.0.6261.171 chromiumSP V134.0.6998.89" 
+INFO  2026-08-08T12:34:17.713 MainWindow::MainWindow() screens.size= 1 ,screenW= 2560 ,screenH= 1440 ,initW= 1440 ,initH= 960 
+INFO  2026-08-08T12:34:17.716 Database.cpp succee to connect sqlite 
+INFO  2026-08-08T12:34:17.729 Database::setFinger finger= "5a6B5aSVLWViZjE0MTRlLTI1ZDYtNDhlNi1iOTcyLTNiZDQzZjU2YTUxYQ==" 
+INFO  2026-08-08T12:34:20.117 ApiCheckVersion::checkVersion url= "*/checkVersion?version=1.9&kernelType=winnt&currentCpuArchitecture=x86_64&finger=5a6B5aSVLWViZjE0MTRlLTI1ZDYtNDhlNi1iOTcyLTNiZDQzZjU2YTUxYQ==&productType=windows&buildAbi=x86_64-little_endian-llp64&buildCpuArchitecture=x86_64&kernelVersion=10.0.26200&prettyProductName=Windows 11 Version 25H2&bootUniqueId=&machineHostName=宁夕&productVersion=11&machineUniqueId=ebf1414e-25d6-48e6-b972-3bd43f56a51a" 
+INFO  2026-08-08T12:34:20.153 ApiCheckVersion::onRequestFinished state= false ,msg= "Protocol \"\" is unknown" 
+INFO  2026-08-08T12:35:51.549 Settings::Settings() 
+INFO  2026-08-08T12:35:57.366 MainWindow::~MainWindow() 
+INFO  2026-08-08T12:35:57.372 Settings::~Settings() 

@@ -1,0 +1,611 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9C2ADCAC-6C22-368B-B1ED-E2ECEDBFAF11}</ProjectGuid>
+    <RootNamespace>Glintree</RootNamespace>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformMinVersion>10.0.26100.0</WindowsTargetPlatformMinVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <PlatformToolset>v143</PlatformToolset>
+    <OutputDirectory>release\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>release\</IntermediateDirectory>
+    <PrimaryOutput>Glintree</PrimaryOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <PlatformToolset>v143</PlatformToolset>
+    <OutputDirectory>debug\</OutputDirectory>
+    <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
+    <CharacterSet>NotSet</CharacterSet>
+    <ConfigurationType>Application</ConfigurationType>
+    <IntermediateDirectory>debug\</IntermediateDirectory>
+    <PrimaryOutput>Glintree</PrimaryOutput>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <Import Project="$(QtMsBuild)\qt_defaults.props" Condition="Exists('$(QtMsBuild)\qt_defaults.props')" />
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <QtInstall>6.6.3_msvc2019_64</QtInstall>
+    <QtModules>core;core-private;gui;gui-private;network;qml;quick;widgets;core5compat;opengl;printsupport;sql;webchannel;webenginecore;positioning;webenginewidgets;webenginequick</QtModules>
+  </PropertyGroup>
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <QtInstall>6.6.3_msvc2019_64</QtInstall>
+    <QtModules>core;core-private;gui;gui-private;network;qml;quick;widgets;core5compat;opengl;printsupport;sql;webchannel;webenginecore;positioning;webenginewidgets;webenginequick</QtModules>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') OR !Exists('$(QtMsBuild)\Qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Glintree</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</IgnoreImportLibrary>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Glintree</TargetName>
+    <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</IgnoreImportLibrary>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>GeneratedFiles\$(ConfigurationName);GeneratedFiles;.;3rdparty;3rdparty\QXlsx;3rdparty\QXlsx\header;3rdparty\QsLog;home;Utils;Task;TaskFlow;flowleftwidget;flowright;Run;release;/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -permissive- -Zc:__cplusplus -Zc:externConstexpr -utf-8 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>release\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <DisableSpecificWarnings>4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ForcedIncludeFiles>stable.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <ObjectFileName>release\</ObjectFileName>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stable.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)\Glintree.pch</PrecompiledHeaderOutputFile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DEPRECATED_WARNINGS;QT_DEPRECATED_WARNINGS;NDEBUG;QT_NO_DEBUG;QT_QMLMODELS_LIB;QT_QMLINTEGRATION_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <ProgramDataBaseFileName></ProgramDataBaseFileName>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>$(QTDIR)\lib\Qt6QmlModels.lib;$(QTDIR)\lib\Qt6EntryPoint.lib;shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <LinkIncremental>false</LinkIncremental>
+      <OptimizeReferences>true</OptimizeReferences>
+      <OutputFile>$(OutDir)\Glintree.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DEPRECATED_WARNINGS;QT_DEPRECATED_WARNINGS;NDEBUG;QT_NO_DEBUG;QT_QMLMODELS_LIB;QT_QMLINTEGRATION_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <QtMoc>
+      <CompilerFlavor>msvc</CompilerFlavor>
+      <Include>./$(Configuration)/moc_predefs.h</Include>
+      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
+      <DynamicSource>output</DynamicSource>
+      <QtMocDir>$(Configuration)</QtMocDir>
+      <QtMocFileName>moc_%(Filename).cpp</QtMocFileName>
+    </QtMoc>
+    <QtRcc>
+      <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
+      <NoZstd>true</NoZstd>
+      <Compression>default</Compression>
+      <InitFuncName>res</InitFuncName>
+      <QtRccDir>$(Configuration)</QtRccDir>
+      <QtRccFileName>qrc_%(Filename).cpp</QtRccFileName>
+    </QtRcc>
+    <QtUic>
+      <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
+      <QtUicDir>$(ProjectDir)</QtUicDir>
+      <QtUicFileName>ui_%(Filename).h</QtUicFileName>
+    </QtUic>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>GeneratedFiles\$(ConfigurationName);GeneratedFiles;.;3rdparty;3rdparty\QXlsx;3rdparty\QXlsx\header;3rdparty\QsLog;home;Utils;Task;TaskFlow;flowleftwidget;flowright;Run;debug;/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -permissive- -Zc:__cplusplus -Zc:externConstexpr -utf-8 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
+      <AssemblerListingLocation>debug\</AssemblerListingLocation>
+      <BrowseInformation>false</BrowseInformation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ForcedIncludeFiles>stable.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <ObjectFileName>debug\</ObjectFileName>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stable.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)\Glintree.pch</PrecompiledHeaderOutputFile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DEPRECATED_WARNINGS;QT_DEPRECATED_WARNINGS;QT_QMLMODELS_LIB;QT_QMLINTEGRATION_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessToFile>false</PreprocessToFile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>$(QTDIR)\lib\Qt6QmlModelsd.lib;$(QTDIR)\lib\Qt6EntryPointd.lib;shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
+      <DataExecutionPrevention>true</DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreImportLibrary>true</IgnoreImportLibrary>
+      <OutputFile>$(OutDir)\Glintree.exe</OutputFile>
+      <RandomizedBaseAddress>true</RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Link>
+    <Midl>
+      <DefaultCharType>Unsigned</DefaultCharType>
+      <EnableErrorChecks>None</EnableErrorChecks>
+      <WarningLevel>0</WarningLevel>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DEPRECATED_WARNINGS;QT_DEPRECATED_WARNINGS;QT_QMLMODELS_LIB;QT_QMLINTEGRATION_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <QtUic>
+      <ExecutionDescription>Uic'ing %(Identity)...</ExecutionDescription>
+      <QtUicDir>$(ProjectDir)</QtUicDir>
+      <QtUicFileName>ui_%(Filename).h</QtUicFileName>
+    </QtUic>
+    <QtMoc>
+      <CompilerFlavor>msvc</CompilerFlavor>
+      <Include>./$(Configuration)/moc_predefs.h</Include>
+      <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
+      <DynamicSource>output</DynamicSource>
+      <QtMocDir>$(Configuration)</QtMocDir>
+      <QtMocFileName>moc_%(Filename).cpp</QtMocFileName>
+    </QtMoc>
+    <QtRcc>
+      <ExecutionDescription>Rcc'ing %(Identity)...</ExecutionDescription>
+      <NoZstd>true</NoZstd>
+      <Compression>default</Compression>
+      <InitFuncName>res</InitFuncName>
+      <QtRccDir>$(Configuration)</QtRccDir>
+      <QtRccFileName>qrc_%(Filename).cpp</QtRccFileName>
+    </QtRcc>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Index\About.cpp" />
+    <ClCompile Include="Utils\Api.cpp" />
+    <ClCompile Include="Utils\ApiCheckVersion.cpp" />
+    <ClCompile Include="Utils\ComDownloaderThread.cpp" />
+    <ClCompile Include="Utils\ComLineWidget.cpp" />
+    <ClCompile Include="Utils\ComLoadingLabel.cpp" />
+    <ClCompile Include="Utils\ComLoadingWidget.cpp" />
+    <ClCompile Include="Utils\ComMessageBox.cpp" />
+    <ClCompile Include="Utils\ComOptionsBox.cpp" />
+    <ClCompile Include="Utils\ComSpinWidget.cpp" />
+    <ClCompile Include="Utils\ComSplitHWidget.cpp" />
+    <ClCompile Include="Utils\ComSplitVWidget.cpp" />
+    <ClCompile Include="Index\Index.cpp" />
+    <ClCompile Include="3rdparty\QsLog\QsLog.cpp" />
+    <ClCompile Include="3rdparty\QsLog\QsLogDest.cpp" />
+    <ClCompile Include="3rdparty\QsLog\QsLogDestConsole.cpp" />
+    <ClCompile Include="3rdparty\QsLog\QsLogDestFile.cpp" />
+    <ClCompile Include="3rdparty\QsLog\QsLogDestFunctor.cpp" />
+    <ClCompile Include="Index\ReportThread.cpp" />
+    <ClCompile Include="Run\RunDialog.cpp" />
+    <ClCompile Include="Run\RunHelper.cpp" />
+    <ClCompile Include="Run\RunMessage.cpp" />
+    <ClCompile Include="Run\RunThreadPipline.cpp" />
+    <ClCompile Include="Run\RunWebEnginePage.cpp" />
+    <ClCompile Include="Run\RunWebEngineView.cpp" />
+    <ClCompile Include="Run\RunWebEngineViewManager.cpp" />
+    <ClCompile Include="Index\Settings.cpp" />
+    <ClCompile Include="Index\SettingsProxyDialog.cpp" />
+    <ClCompile Include="Run\StartupDialog.cpp" />
+    <ClCompile Include="Task\Task.cpp" />
+    <ClCompile Include="Task\TaskBrowserMenu.cpp" />
+    <ClCompile Include="Task\TaskData.cpp" />
+    <ClCompile Include="Task\TaskDataDownloadManager.cpp" />
+    <ClCompile Include="Task\TaskDataExportDialog.cpp" />
+    <ClCompile Include="Task\TaskDataMenuDialog.cpp" />
+    <ClCompile Include="Task\TaskDo.cpp" />
+    <ClCompile Include="Task\TaskImport.cpp" />
+    <ClCompile Include="Task\TaskManage.cpp" />
+    <ClCompile Include="Task\TaskSettings.cpp" />
+    <ClCompile Include="Task\TaskSmartAlertDialog.cpp" />
+    <ClCompile Include="Task\TaskWebEngineBridge.cpp" />
+    <ClCompile Include="Task\TaskWebEnginePage.cpp" />
+    <ClCompile Include="Task\TaskWebEngineProfile.cpp" />
+    <ClCompile Include="Task\TaskWebEngineView.cpp" />
+    <ClCompile Include="Index\VersionDialog.cpp" />
+    <ClCompile Include="Utils\database.cpp" />
+    <ClCompile Include="Task\mCustomtaskSmartalertClick.cpp" />
+    <ClCompile Include="Task\mCustomtaskSmartalertItem.cpp" />
+    <ClCompile Include="Task\mCustomtaskSmartalertSelectall.cpp" />
+    <ClCompile Include="Task\mCustomtaskSmartalertSuccess.cpp" />
+    <ClCompile Include="Task\mCustomtaskSmartalertXpath.cpp" />
+    <ClCompile Include="TaskFlow\flowleftwidget\mDownArrow.cpp" />
+    <ClCompile Include="TaskFlow\mFcHelper.cpp" />
+    <ClCompile Include="TaskFlow\mFcModels.cpp" />
+    <ClCompile Include="TaskFlow\flowleftwidget\mFlowButtonWidget.cpp" />
+    <ClCompile Include="TaskFlow\flowleftwidget\mFlowIfWidget.cpp" />
+    <ClCompile Include="TaskFlow\flowleftwidget\mFlowLoopWidget.cpp" />
+    <ClCompile Include="TaskFlow\flowleftwidget\mFlowMenuToolbutton.cpp" />
+    <ClCompile Include="TaskFlow\flowright\mFlowRightClickeleWidget.cpp" />
+    <ClCompile Include="TaskFlow\flowright\mFlowRightExtractWidget.cpp" />
+    <ClCompile Include="TaskFlow\flowright\mFlowRightIfWidget.cpp" />
+    <ClCompile Include="TaskFlow\flowright\mFlowRightInputWidget.cpp" />
+    <ClCompile Include="TaskFlow\flowright\mFlowRightLoopWidget.cpp" />
+    <ClCompile Include="TaskFlow\flowright\mFlowRightMouseWidget.cpp" />
+    <ClCompile Include="TaskFlow\flowright\mFlowRightOpenwebWidget.cpp" />
+    <ClCompile Include="TaskFlow\flowright\mFlowRightSwitchWidget.cpp" />
+    <ClCompile Include="TaskFlow\flowright\mFlowRightTipWidget.cpp" />
+    <ClCompile Include="TaskFlow\flowleftwidget\mFlowStepMenuDialog.cpp" />
+    <ClCompile Include="TaskFlow\flowright\mOptionBox.cpp" />
+    <ClCompile Include="TaskFlow\flowright\mRightSave.cpp" />
+    <ClCompile Include="TaskFlow\flowright\mRollWidget.cpp" />
+    <ClCompile Include="TaskFlow\mTaskDeserialize.cpp" />
+    <ClCompile Include="TaskFlow\mTaskSerialize.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="mainwindow.cpp" />
+    <ClCompile Include="Utils\models.cpp" />
+    <ClCompile Include="TaskFlow\pageCustomtaskFlow.cpp" />
+    <ClCompile Include="TaskFlow\pageCustomtaskFlowControl.cpp" />
+    <ClCompile Include="tab.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxabstractooxmlfile.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxabstractsheet.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxcell.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxcellformula.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxcelllocation.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxcellrange.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxcellreference.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxchart.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxchartsheet.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxcolor.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxconditionalformatting.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxcontenttypes.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxdatavalidation.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxdatetype.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxdocpropsapp.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxdocpropscore.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxdocument.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxdrawing.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxdrawinganchor.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxformat.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxmediafile.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxnumformatparser.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxrelationships.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxrichstring.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxsharedstrings.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxsimpleooxmlfile.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxstyles.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxtheme.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxutility.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxworkbook.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxworksheet.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxzipreader.cpp" />
+    <ClCompile Include="3rdparty\QXlsx\source\xlsxzipwriter.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Index\About.h" />
+    <QtMoc Include="Utils\Api.h" />
+    <QtMoc Include="Utils\ApiCheckVersion.h" />
+    <QtMoc Include="Utils\ComDownloaderThread.h" />
+    <QtMoc Include="Utils\ComLineWidget.h" />
+    <QtMoc Include="Utils\ComLoadingLabel.h" />
+    <QtMoc Include="Utils\ComLoadingWidget.h" />
+    <QtMoc Include="Utils\ComMessageBox.h" />
+    <QtMoc Include="Utils\ComOptionsBox.h" />
+    <QtMoc Include="Utils\ComSpinWidget.h" />
+    <QtMoc Include="Utils\ComSplitHWidget.h" />
+    <QtMoc Include="Utils\ComSplitVWidget.h" />
+    <QtMoc Include="Index\Index.h" />
+    <ClInclude Include="3rdparty\QsLog\QsLog.h" />
+    <ClInclude Include="3rdparty\QsLog\QsLogDest.h" />
+    <ClInclude Include="3rdparty\QsLog\QsLogDestConsole.h" />
+    <ClInclude Include="3rdparty\QsLog\QsLogDestFile.h" />
+    <QtMoc Include="3rdparty\QsLog\QsLogDestFunctor.h" />
+    <ClInclude Include="3rdparty\QsLog\QsLogDisableForThisFile.h" />
+    <ClInclude Include="3rdparty\QsLog\QsLogLevel.h" />
+    <QtMoc Include="Index\ReportThread.h" />
+    <QtMoc Include="Run\RunDialog.h" />
+    <QtMoc Include="Run\RunHelper.h" />
+    <QtMoc Include="Run\RunMessage.h" />
+    <QtMoc Include="Run\RunThreadPipline.h" />
+    <QtMoc Include="Run\RunWebEnginePage.h" />
+    <QtMoc Include="Run\RunWebEngineView.h" />
+    <QtMoc Include="Run\RunWebEngineViewManager.h" />
+    <QtMoc Include="Index\Settings.h" />
+    <QtMoc Include="Index\SettingsProxyDialog.h" />
+    <QtMoc Include="Run\StartupDialog.h" />
+    <QtMoc Include="Task\Task.h" />
+    <QtMoc Include="Task\TaskBrowserMenu.h" />
+    <QtMoc Include="Task\TaskData.h" />
+    <QtMoc Include="Task\TaskDataDownloadManager.h" />
+    <QtMoc Include="Task\TaskDataExportDialog.h" />
+    <QtMoc Include="Task\TaskDataMenuDialog.h" />
+    <QtMoc Include="Task\TaskDo.h" />
+    <QtMoc Include="Task\TaskImport.h" />
+    <QtMoc Include="Task\TaskManage.h" />
+    <QtMoc Include="Task\TaskSettings.h" />
+    <QtMoc Include="Task\TaskSmartAlertDialog.h" />
+    <QtMoc Include="Task\TaskWebEngineBridge.h" />
+    <QtMoc Include="Task\TaskWebEnginePage.h" />
+    <QtMoc Include="Task\TaskWebEngineProfile.h" />
+    <QtMoc Include="Task\TaskWebEngineView.h" />
+    <ClInclude Include="Utils\Utils.h" />
+    <QtMoc Include="Index\VersionDialog.h" />
+    <ClInclude Include="Utils\constant.h" />
+    <QtMoc Include="Utils\database.h" />
+    <QtMoc Include="Task\mCustomtaskSmartalertClick.h" />
+    <QtMoc Include="Task\mCustomtaskSmartalertItem.h" />
+    <QtMoc Include="Task\mCustomtaskSmartalertSelectall.h" />
+    <QtMoc Include="Task\mCustomtaskSmartalertSuccess.h" />
+    <QtMoc Include="Task\mCustomtaskSmartalertXpath.h" />
+    <QtMoc Include="TaskFlow\flowleftwidget\mDownArrow.h" />
+    <ClInclude Include="TaskFlow\mFcHelper.h" />
+    <ClInclude Include="TaskFlow\mFcModels.h" />
+    <QtMoc Include="TaskFlow\flowleftwidget\mFlowButtonWidget.h" />
+    <QtMoc Include="TaskFlow\flowleftwidget\mFlowIfWidget.h" />
+    <QtMoc Include="TaskFlow\flowleftwidget\mFlowLoopWidget.h" />
+    <QtMoc Include="TaskFlow\flowleftwidget\mFlowMenuToolbutton.h" />
+    <QtMoc Include="TaskFlow\flowright\mFlowRightClickeleWidget.h" />
+    <QtMoc Include="TaskFlow\flowright\mFlowRightExtractWidget.h" />
+    <QtMoc Include="TaskFlow\flowright\mFlowRightIfWidget.h" />
+    <QtMoc Include="TaskFlow\flowright\mFlowRightInputWidget.h" />
+    <QtMoc Include="TaskFlow\flowright\mFlowRightLoopWidget.h" />
+    <QtMoc Include="TaskFlow\flowright\mFlowRightMouseWidget.h" />
+    <QtMoc Include="TaskFlow\flowright\mFlowRightOpenwebWidget.h" />
+    <QtMoc Include="TaskFlow\flowright\mFlowRightSwitchWidget.h" />
+    <QtMoc Include="TaskFlow\flowright\mFlowRightTipWidget.h" />
+    <QtMoc Include="TaskFlow\flowleftwidget\mFlowStepMenuDialog.h" />
+    <QtMoc Include="TaskFlow\flowright\mOptionBox.h" />
+    <QtMoc Include="TaskFlow\flowright\mRightSave.h" />
+    <QtMoc Include="TaskFlow\flowright\mRollWidget.h" />
+    <QtMoc Include="TaskFlow\mTaskDeserialize.h" />
+    <QtMoc Include="TaskFlow\mTaskSerialize.h" />
+    <QtMoc Include="mainwindow.h" />
+    <ClInclude Include="Utils\models.h" />
+    <QtMoc Include="TaskFlow\pageCustomtaskFlow.h" />
+    <QtMoc Include="TaskFlow\pageCustomtaskFlowControl.h" />
+    <CustomBuild Include="stable.h">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">echo /*-------------------------------------------------------------------- &gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo * Precompiled header source file used by Visual Studio.NET to generate&gt;&gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo * the .pch file.&gt;&gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo *&gt;&gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo * Due to issues with the dependencies checker within the IDE, it&gt;&gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo * sometimes fails to recompile the PCH file, if we force the IDE to&gt;&gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo * create the PCH file directly from the header file.&gt;&gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo *&gt;&gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo * This file is auto-generated by qmake since no PRECOMPILED_SOURCE was&gt;&gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo * specified, and is used as the common stdafx.cpp. The file is only&gt;&gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo * generated when creating .vcxproj project files, and is not used for&gt;&gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo * command line compilations by nmake.&gt;&gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo *&gt;&gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo * WARNING: All changes made in this file will be lost.&gt;&gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo --------------------------------------------------------------------*/&gt;&gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo #include "stable.h"&gt;&gt;stable.h.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating precompiled header source file 'stable.h.cpp' ...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">stable.h.cpp;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">echo /*-------------------------------------------------------------------- &gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo * Precompiled header source file used by Visual Studio.NET to generate&gt;&gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo * the .pch file.&gt;&gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo *&gt;&gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo * Due to issues with the dependencies checker within the IDE, it&gt;&gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo * sometimes fails to recompile the PCH file, if we force the IDE to&gt;&gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo * create the PCH file directly from the header file.&gt;&gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo *&gt;&gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo * This file is auto-generated by qmake since no PRECOMPILED_SOURCE was&gt;&gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo * specified, and is used as the common stdafx.cpp. The file is only&gt;&gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo * generated when creating .vcxproj project files, and is not used for&gt;&gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo * command line compilations by nmake.&gt;&gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo *&gt;&gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo * WARNING: All changes made in this file will be lost.&gt;&gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo --------------------------------------------------------------------*/&gt;&gt;stable.h.cpp
+if errorlevel 1 goto VCEnd
+echo #include "stable.h"&gt;&gt;stable.h.cpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating precompiled header source file 'stable.h.cpp' ...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stable.h.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="style.h" />
+    <QtMoc Include="tab.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxabstractooxmlfile.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxabstractooxmlfile_p.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxabstractsheet.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxabstractsheet_p.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxcell.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxcell_p.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxcellformula.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxcellformula_p.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxcelllocation.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxcellrange.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxcellreference.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxchart.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxchart_p.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxchartsheet.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxchartsheet_p.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxcolor_p.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxconditionalformatting.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxconditionalformatting_p.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxcontenttypes_p.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxdatavalidation.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxdatavalidation_p.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxdatetype.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxdocpropsapp_p.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxdocpropscore_p.h" />
+    <QtMoc Include="3rdparty\QXlsx\header\xlsxdocument.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxdocument_p.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxdrawing_p.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxdrawinganchor_p.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxformat.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxformat_p.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxglobal.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxmediafile_p.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxnumformatparser_p.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxrelationships_p.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxrichstring.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxrichstring_p.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxsharedstrings_p.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxsimpleooxmlfile_p.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxstyles_p.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxtheme_p.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxutility_p.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxworkbook.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxworkbook_p.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxworksheet.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxworksheet_p.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxzipreader_p.h" />
+    <ClInclude Include="3rdparty\QXlsx\header\xlsxzipwriter_p.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="debug\moc_predefs.h.cbt">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cl -Bx"$(QTDIR)\bin\qmake.exe" -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -permissive- -Zc:__cplusplus -Zc:externConstexpr -Zi -MDd -std:c++17 -utf-8 -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E $(QTDIR)\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;$(IntDir)\moc_predefs.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generate moc_predefs.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)\moc_predefs.h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="release\moc_predefs.h.cbt">
+      <FileType>Document</FileType>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cl -Bx"$(QTDIR)\bin\qmake.exe" -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -permissive- -Zc:__cplusplus -Zc:externConstexpr -O2 -MD -std:c++17 -utf-8 -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E $(QTDIR)\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;$(IntDir)\moc_predefs.h</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generate moc_predefs.h</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)\moc_predefs.h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClCompile Include="stable.h.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(NOINHERIT)</ForcedIncludeFiles>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">stable.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(NOINHERIT)</ForcedIncludeFiles>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stable.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="TaskFlow\flowleftwidget\mFlowIfWidget.ui" />
+    <QtUic Include="TaskFlow\flowleftwidget\mFlowLoopWidget.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\images\icon\mainwindow\add.png" />
+    <None Include="res\images\icon\flow\arrow-circle.png" />
+    <None Include="res\images\icon\flow\arrow-down.png" />
+    <None Include="res\images\icon\blank.png" />
+    <None Include="res\images\control\captcha.jpg" />
+    <None Include="res\images\control\click.jpg" />
+    <None Include="res\images\control\controls.json" />
+    <None Include="res\js\customtask.js.txt" />
+    <None Include="res\images\icon\user\del.png" />
+    <None Include="res\images\control\end-loop.jpg" />
+    <None Include="res\images\control\end.jpg" />
+    <None Include="res\images\icon\error.png" />
+    <None Include="res\js\execute.js.txt" />
+    <None Include="res\images\control\extract-data.jpg" />
+    <None Include="res\images\icon\feedback.png" />
+    <None Include="res\images\icon\flow\help.png" />
+    <None Include="res\images\control\if-else.jpg" />
+    <None Include="res\images\control\input-text.jpg" />
+    <None Include="res\images\loading.gif" />
+    <None Include="logo.ico" />
+    <None Include="res\images\logo.png" />
+    <None Include="res\images\icon\logout.png" />
+    <None Include="res\images\control\loop.jpg" />
+    <None Include="res\images\icon\mainwindow\manage.png" />
+    <None Include="res\images\icon\user\menu.png" />
+    <None Include="res\images\control\mouse-ele.jpg" />
+    <None Include="res\images\control\open.jpg" />
+    <None Include="res\images\icon\password.png" />
+    <None Include="res\images\icon\flow\pause.png" />
+    <None Include="res\js\lib\qwebchannel.js.txt" />
+    <None Include="res\js\lib\qwebchannel_release.js.txt" />
+    <None Include="res\images\icon\flow\refresh.png" />
+    <QtRcc Include="res.qrc" />
+    <None Include="res\images\icon\search.png" />
+    <None Include="res\images\icon\searchblack.png" />
+    <None Include="res\images\icon\settings.png" />
+    <None Include="res\images\icon\flow\start.png" />
+    <None Include="res\images\icon\stop.png" />
+    <None Include="res\qss\style.qss" />
+    <None Include="res\images\icon\success.png" />
+    <None Include="res\images\control\switch-select.jpg" />
+    <None Include="res\images\icon\flow\tip.png" />
+    <None Include="res\images\icon\user.png" />
+    <None Include="res\images\icon\username.png" />
+    <None Include="res\images\icon\verify.png" />
+    <None Include="res\images\icon\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include=".\Glintree_resource.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <Import Project="$(QtMsBuild)\qt.targets" Condition="Exists('$(QtMsBuild)\qt.targets')" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

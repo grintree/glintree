@@ -1,0 +1,3 @@
+Project MESSAGE: This project is using private headers and will therefore be tied to this specific Qt module build version.
+Project MESSAGE: Running this project against other versions of the Qt modules may crash at any arbitrary point.
+Project MESSAGE: This is not a bug, but a result of using Qt internals. You have been warned!

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>14 · 手绘涂鸦</title>
+<style>
+:root{--paper:#FFFDF5;--ink:#3B3B3B;--red:#E4572E;--blue:#3B8EA5;--green:#57A773;--yellow:#FFD23F;--muted:#8C8574}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Segoe Print","Comic Sans MS","Microsoft YaHei",cursive;background:#F2EBD9;color:var(--ink);height:100vh;display:flex;align-items:center;justify-content:center}
+body::before{content:"";position:fixed;inset:0;background-image:repeating-linear-gradient(0deg,transparent 0 27px,rgba(160,170,220,.25) 27px 28px);pointer-events:none}
+.desktop{width:1180px;height:760px;background:var(--paper);border:3px dashed var(--ink);border-radius:28px;box-shadow:0 18px 40px rgba(90,70,40,.18);display:flex;flex-direction:column;position:relative}
+.titlebar{height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:3px wavy var(--red)}
+.titlebar b{font-size:18px;color:var(--red);transform:rotate(-1deg);display:inline-block}
+.sketchdots{display:flex;gap:10px}
+.sketchdots i{width:16px;height:16px;border-radius:50%;border:2px solid var(--ink);background:var(--yellow)}
+.sketchdots i:nth-child(2){background:var(--green)}.sketchdots i:nth-child(3){background:var(--blue)}
+.body{flex:1;display:flex;gap:16px;padding:16px;min-height:0}
+.side{width:230px;background:#FFF9E8;border:3px solid var(--ink);border-radius:22px;transform:rotate(-.6deg);padding:16px 12px;display:flex;flex-direction:column;box-shadow:6px 8px 0 rgba(59,59,59,.12)}
+.logo{font-size:19px;font-weight:700;color:var(--blue);text-align:center;padding:8px 0 14px;border-bottom:3px wavy var(--green);margin-bottom:12px}
+.nav a{display:flex;align-items:center;gap:8px;padding:9px 12px;margin-bottom:8px;border:2px solid var(--ink);border-radius:14px;background:#fff;text-decoration:none;font-size:14px;color:var(--ink);transform:rotate(var(--r,0deg))}
+.nav a:nth-child(2){--r:-1deg}.nav a:nth-child(3){--r:.7deg}.nav a:nth-child(4){--r:-.4deg}.nav a:nth-child(5){--r:1deg}
+.nav a.on{background:var(--yellow);font-weight:700}
+.nav a:hover{transform:rotate(0) scale(1.03)}
+.side .sticky{margin-top:auto;background:var(--yellow);border:2px solid var(--ink);border-radius:4px;padding:14px;font-size:13px;transform:rotate(2deg);box-shadow:4px 6px 0 rgba(59,59,59,.14)}
+.main{flex:1;display:flex;flex-direction:column;gap:14px;min-width:0}
+.toolbar{height:58px;background:#FFF9E8;border:3px solid var(--ink);border-radius:20px;transform:rotate(.4deg);display:flex;align-items:center;gap:10px;padding:0 14px;box-shadow:5px 6px 0 rgba(59,59,59,.1)}
+.toolbar input{flex:1;max-width:300px;height:34px;border:2px solid var(--ink);border-radius:12px;background:#fff;padding:0 12px;font-family:inherit;font-size:14px}
+.btn{height:34px;padding:0 16px;border:2px solid var(--ink);border-radius:14px;background:#fff;font-family:inherit;font-size:13px;cursor:pointer;transform:rotate(-.6deg);box-shadow:3px 4px 0 rgba(59,59,59,.14)}
+.btn.red{background:var(--red);color:#fff;transform:rotate(.7deg)}
+.btn.blue{background:var(--blue);color:#fff}
+.workspace{flex:1;display:grid;grid-template-columns:300px 1fr;gap:16px;min-height:0}
+.flow{background:#FFF9E8;border:3px solid var(--ink);border-radius:20px;transform:rotate(-.5deg);padding:16px;overflow:auto;box-shadow:5px 6px 0 rgba(59,59,59,.1)}
+.flow h3{font-size:15px;color:var(--green);border-bottom:3px wavy var(--blue);padding-bottom:8px;margin-bottom:14px;letter-spacing:2px}
+.step{background:#fff;border:2px solid var(--ink);border-radius:14px;padding:11px 14px;margin-bottom:10px;font-size:14px;transform:rotate(var(--r,0deg))}
+.step:nth-child(odd){--r:-.5deg}.step:nth-child(even){--r:.5deg}
+.step small{display:block;color:var(--muted);font-size:11px;margin-top:3px}
+.step.on{background:var(--yellow);box-shadow:4px 5px 0 rgba(59,59,59,.16)}
+.arrow{text-align:center;color:var(--muted);font-size:14px;margin:-5px 0;transform:rotate(0)}
+.browser{display:flex;flex-direction:column;background:#FFF9E8;border:3px solid var(--ink);border-radius:20px;transform:rotate(.3deg);overflow:hidden;box-shadow:5px 6px 0 rgba(59,59,59,.1)}
+.addr{height:46px;display:flex;align-items:center;gap:10px;padding:0 14px;border-bottom:3px wavy var(--blue)}
+.addr .field{flex:1;height:30px;border:2px solid var(--ink);border-radius:12px;background:#fff;display:flex;align-items:center;padding:0 12px;font-size:12px;color:var(--muted)}
+.page{flex:1;padding:22px;overflow:auto}
+.page h2{font-size:22px;color:var(--red);transform:rotate(-.5deg);display:inline-block;text-decoration:underline wavy var(--blue) 2px}
+.page .crumb{font-size:12px;color:var(--muted);margin:8px 0 20px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:#fff;border:2px solid var(--ink);border-radius:18px;padding:14px;transform:rotate(var(--r,0deg));box-shadow:4px 5px 0 rgba(59,59,59,.12)}
+.card:nth-child(1){--r:-.8deg}.card:nth-child(2){--r:.6deg}.card:nth-child(3){--r:-.4deg}
+.card .p{height:62px;border:2px dashed var(--ink);border-radius:12px;background:#FFF9E8;margin-bottom:10px}
+.card b{font-size:14px}
+.card span{display:block;font-size:12px;color:var(--muted);margin-top:4px}
+.statusbar{height:32px;display:flex;align-items:center;gap:16px;padding:0 16px;font-size:12px;color:var(--muted);border-top:3px wavy var(--green)}
+.sw{display:inline-block;width:14px;height:14px;border:2px solid var(--ink);border-radius:50%;margin-left:4px;vertical-align:middle}
+</style>
+</head>
+<body>
+<div class="desktop">
+  <div class="titlebar"><b>✏ Glintree 手绘工作台</b><div class="sketchdots"><i></i><i></i><i></i></div></div>
+  <div class="body">
+    <aside class="side">
+      <div class="logo">Glintree</div>
+      <nav class="nav"><a href="#">⌂ 首页</a><a href="#" class="on">◈ 任务编排</a><a href="#">▤ 任务管理</a><a href="#">☷ 数据查看</a><a href="#">⚙ 设置</a></nav>
+      <div class="sticky">📌 提示：先保存再执行，别弄丢流程哦！</div>
+    </aside>
+    <div class="main">
+      <div class="toolbar">
+        <input value="新品价格采集任务">
+        <span style="flex:1"></span>
+        <button class="btn">保存</button>
+        <button class="btn red">执行</button>
+        <button class="btn blue">设置</button>
+      </div>
+      <div class="workspace">
+        <section class="flow">
+          <h3>✦ 我的流程</h3>
+          <div class="step on">打开网页<small>https://www.example.com/list</small></div>
+          <div class="arrow">▼</div>
+          <div class="step">循环：网址列表<small>共 3 条地址</small></div>
+          <div class="arrow">▼</div>
+          <div class="step">点击元素<small>A · 商品链接</small></div>
+          <div class="arrow">▼</div>
+          <div class="step">提取数据<small>字段_1 / 字段_2 / 字段_3</small></div>
+        </section>
+        <section class="browser">
+          <div class="addr"><span>✿</span><span class="field">https://www.example.com/list</span><span style="font-size:12px;color:var(--muted)">刷新</span></div>
+          <div class="page">
+            <h2>商品列表</h2>
+            <div class="crumb">首页 / 数码 / 新品</div>
+            <div class="cards">
+              <div class="card"><div class="p"></div><b>无线降噪耳机</b><span>¥ 899 · 已采集 128 条</span></div>
+              <div class="card"><div class="p"></div><b>智能手表 Pro</b><span>¥ 1,299 · 已采集 86 条</span></div>
+              <div class="card"><div class="p"></div><b>便携投影仪</b><span>¥ 2,099 · 已采集 54 条</span></div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="statusbar"><span>任务空闲</span><span>已采集 0 条</span><span style="flex:1"></span><span>令牌：蜡笔红 <i class="sw" style="background:#E4572E"></i> 湖水蓝 <i class="sw" style="background:#3B8EA5"></i> 荧光黄 <i class="sw" style="background:#FFD23F"></i> · 手写体 · 歪扭边框</span></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

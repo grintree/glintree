@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>自然森林 · Glintree 完整界面</title>
+<style>
+:root{--green:#1F3D2B;--green2:#2E5B40;--sage:#A8C3A0;--wood:#8B5E3C;--cream:#F4F1E6;--card:#FBF8EE;--text:#2C3328;--muted:#8A8B78;--line:#E2DCC8;--ok:#4C8F5E;--r:16px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:linear-gradient(180deg,#D8D5C6,#CAC5B2);color:var(--text);height:100vh;display:flex;align-items:center;justify-content:center}
+.desktop{width:1280px;height:820px;background:var(--cream);border-radius:22px;box-shadow:0 30px 80px rgba(30,60,40,.35);display:flex;flex-direction:column;overflow:hidden}
+/* ---------- 顶栏 ---------- */
+.titlebar{height:52px;background:var(--green);color:#EAF2E6;display:flex;align-items:center;gap:24px;padding:0 22px;flex:none}
+.brand{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:800;letter-spacing:.5px}
+.brand i{width:26px;height:26px;border-radius:50% 50% 8px 8px;background:var(--sage);display:inline-block}
+.titlebar .search{flex:1;max-width:320px;height:30px;border-radius:15px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);padding:0 14px;color:#EAF2E6;font-size:12.5px;outline:none}
+.titlebar .search::placeholder{color:#A9C4A1}
+.titlebar .win{display:flex;gap:8px;margin-left:auto}
+.titlebar .win span{width:32px;height:26px;border:1px solid rgba(255,255,255,.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#C9DCC4;cursor:pointer}
+.titlebar .win span:hover{background:rgba(255,255,255,.12)}
+/* ---------- 布局 ---------- */
+.body{flex:1;display:flex;min-height:0}
+.sidebar{width:235px;background:linear-gradient(180deg,var(--green2),var(--green));padding:18px 14px;display:flex;flex-direction:column;flex:none}
+.side-logo{display:flex;align-items:center;gap:9px;color:#F4F1E6;font-size:18px;font-weight:800;padding:4px 8px 18px}
+.side-logo i{width:32px;height:32px;border-radius:50% 50% 9px 9px;background:var(--sage);display:inline-block}
+.nav a{display:flex;align-items:center;gap:11px;padding:11px 13px;border-radius:13px;margin-bottom:7px;color:#C9DCC4;text-decoration:none;font-size:14px;cursor:pointer}
+.nav a:hover{background:rgba(255,255,255,.08)}
+.nav a.on{background:rgba(255,255,255,.16);color:#fff;font-weight:700}
+.nav a .ic{width:20px;text-align:center;font-size:13px}
+.sidebar .foot{margin-top:auto;color:#A9C4A1;font-size:12px;padding:12px 8px;border-top:1px solid rgba(255,255,255,.14);line-height:1.8}
+main{flex:1;min-width:0;overflow:hidden}
+.page{display:none;height:100%;overflow:auto;padding:24px 28px}
+.page.on{display:block}
+.container{max-width:1090px;margin:0 auto}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:0 4px 14px rgba(60,80,50,.06)}
+.section-title{display:flex;align-items:baseline;gap:10px;margin-bottom:16px}
+.section-title h2{font-size:20px;font-weight:800;color:var(--green)}
+.section-title span{font-size:12px;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:34px;padding:0 17px;border-radius:11px;border:1px solid #D9D2BC;background:var(--cream);font-size:13px;color:var(--text);cursor:pointer;transition:.15s}
+.btn:hover{background:#EFE9D6}
+.btn.primary{background:var(--green2);border-color:var(--green2);color:#fff}
+.btn.primary:hover{background:#3A6E4F}
+.btn.wood{background:var(--wood);border-color:var(--wood);color:#fff}
+.btn.sm{height:28px;padding:0 12px;font-size:12px}
+.input{height:34px;border:1px solid #D9D2BC;border-radius:11px;background:var(--cream);padding:0 13px;font-size:13px;outline:none;color:var(--text)}
+.input:focus{border-color:var(--sage);box-shadow:0 0 0 3px rgba(168,195,160,.25)}
+.tag{display:inline-block;padding:2px 10px;border-radius:999px;font-size:11px;font-weight:700}
+.tag.run{background:#E8F0E2;color:var(--green2)}
+.tag.ok{background:#E4F2E8;color:var(--ok)}
+.tag.stop{background:#F7E8E0;color:#B3643C}
+/* ---------- 首页 ---------- */
+.hero{display:flex;align-items:center;gap:34px;padding:16px 6px 24px}
+.hero .copy{flex:1}
+.hero h1{font-size:29px;font-weight:800;color:var(--green);letter-spacing:-.5px}
+.hero p{color:var(--muted);font-size:14px;margin-top:8px}
+.herobtn{display:flex;gap:10px;margin-top:20px}
+.herobtn .input{flex:1;height:40px;border-radius:20px;font-size:14px}
+.herobtn .btn{height:40px;border-radius:20px;padding:0 24px}
+.hero .art{width:290px;height:185px;border-radius:20px;background:linear-gradient(150deg,#DCE8D2,#F1E7CE);display:flex;align-items:center;justify-content:center;font-size:56px;border:1px solid var(--line)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-bottom:18px}
+.stat{padding:17px 18px}
+.stat b{font-size:25px;font-weight:800;color:var(--green2)}
+.stat span{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+.two-col{display:grid;grid-template-columns:1.5fr 1fr;gap:14px}
+.panel-head{padding:14px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.panel-head b{font-size:14px;color:var(--green)}
+.panel-body{padding:8px 8px 10px}
+.rtask{display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:12px;cursor:pointer}
+.rtask:hover{background:rgba(143,178,133,.12)}
+.rtask .ico{width:35px;height:35px;border-radius:11px;background:#E8F0E2;color:var(--green2);display:flex;align-items:center;justify-content:center;font-size:14px}
+.rtask .mid{flex:1;min-width:0}
+.rtask .mid b{font-size:13px;display:block}
+.rtask .mid small{color:var(--muted);font-size:11.5px}
+.tiprow{display:flex;gap:10px;padding:10px;font-size:12.5px;color:var(--muted);border-bottom:1px solid var(--line)}
+.tiprow:last-child{border-bottom:0}
+.tiprow b{color:var(--wood);font-weight:800}
+/* ---------- 任务编排 ---------- */
+.editor{display:grid;grid-template-columns:295px 1fr 280px;gap:13px;height:100%;min-height:0}
+.editor .card{display:flex;flex-direction:column;min-height:0}
+.flow-head{padding:14px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.flow-head b{font-size:14px;color:var(--green)}
+.flow-add{display:flex;flex-wrap:wrap;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line)}
+.flow-add span{padding:4px 10px;border-radius:999px;border:1px solid #D9D2BC;font-size:11px;color:var(--muted);cursor:pointer;background:var(--cream)}
+.flow-add span:hover{border-color:var(--sage);color:var(--green2);background:#E8F0E2}
+.flow-list{flex:1;overflow:auto;padding:14px}
+.fstep{display:flex;align-items:flex-start;gap:11px;padding:12px 13px;border:1px solid var(--line);border-left:4px solid var(--sage);border-radius:12px;margin-bottom:9px;background:#fff}
+.fstep .no{width:24px;height:24px;border-radius:50%;background:#EDE7D4;color:var(--wood);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;margin-top:1px}
+.fstep b{font-size:13px;display:block}
+.fstep small{font-size:11px;color:var(--muted);display:block;margin-top:3px;line-height:1.5}
+.fstep.on{border-left-color:var(--wood);background:#F3EDDA;box-shadow:0 4px 12px rgba(80,60,30,.08)}
+.fstep.on .no{background:var(--wood);color:#fff}
+.fconn{width:1px;height:12px;background:var(--line);margin-left:23px}
+.browser{min-height:0}
+.addrbar{height:47px;display:flex;align-items:center;gap:10px;padding:0 14px;border-bottom:1px solid var(--line)}
+.addrbar .input{flex:1;height:30px;border-radius:15px;font-size:12px}
+.addrbar .lock{color:var(--ok);font-size:13px}
+.browser-body{flex:1;overflow:auto;padding:22px;background:linear-gradient(180deg,#FBF8EE,#F4F1E6)}
+.browser-body h2{font-size:21px;font-weight:800;color:var(--green)}
+.browser-body .crumb{font-size:12px;color:var(--muted);margin:7px 0 18px}
+.goods{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.good{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px;transition:.15s}
+.good:hover{border-color:var(--sage);box-shadow:0 6px 18px rgba(60,90,60,.1)}
+.good .ph{height:62px;border-radius:10px;background:linear-gradient(135deg,#DDE8D5,#EDE4CE);margin-bottom:10px}
+.good b{font-size:13.5px;color:var(--green2)}
+.good span{display:block;font-size:11.5px;color:var(--muted);margin-top:4px}
+.props-head{padding:14px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.props-head b{font-size:14px;color:var(--green)}
+.props-body{flex:1;overflow:auto;padding:15px}
+.group-label{font-size:11px;font-weight:800;color:var(--wood);letter-spacing:.6px;margin:14px 0 8px;text-transform:uppercase}
+.form-row{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+.form-row label{font-size:12px;color:var(--muted)}
+.form-row .input{width:100%;height:32px}
+.check{display:flex;align-items:center;gap:8px;font-size:12.5px;padding:6px 0;cursor:pointer}
+.check input{accent-color:var(--green2);width:15px;height:15px}
+/* ---------- 任务管理 ---------- */
+.table-tool,.data-tool{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.table-card{overflow:hidden}
+.thead,.trow{display:grid;grid-template-columns:60px 1.5fr 1.2fr .8fr 1fr 80px;align-items:center}
+.thead{background:#EFEADB;border-bottom:1px solid var(--line);font-size:12px;font-weight:800;color:var(--muted)}
+.thead span{padding:12px 14px}
+.trow{border-bottom:1px solid var(--line);font-size:13px;background:#fff}
+.trow:hover{background:#F7F4E9}
+.trow span{padding:13px 14px}
+.trow .taskname b{font-size:13px}
+.trow .taskname small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+.ops{display:flex;gap:6px}
+.dot-btn{width:27px;height:27px;border:1px solid var(--line);border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--muted);cursor:pointer}
+.dot-btn:hover{border-color:var(--wood);color:var(--wood)}
+/* ---------- 数据查看 ---------- */
+.data-col{display:flex;flex-direction:column;height:100%}
+.data-card{overflow:hidden;flex:1;display:flex;flex-direction:column;min-height:0}
+.dthead,.drow{display:grid;grid-template-columns:1.2fr 1fr 1.4fr .8fr;align-items:center}
+.dthead{background:#EFEADB;border-bottom:1px solid var(--line);font-size:12px;font-weight:800;color:var(--muted)}
+.dthead span{padding:12px 14px}
+.drow{border-bottom:1px solid var(--line);font-size:13px;background:#fff}
+.drow:hover{background:#F7F4E9}
+.drow span{padding:13px 14px}
+.logbar{border:1px solid var(--line);border-radius:12px;margin-top:14px;overflow:hidden;background:#fff}
+.lhead{display:flex;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--line);font-size:12px;font-weight:800;color:var(--green);background:#EFEADB}
+.lrow{padding:9px 14px;font-size:12px;color:var(--muted);border-bottom:1px solid var(--line)}
+.lrow:last-child{border-bottom:0}
+.pager{display:flex;align-items:center;gap:8px;margin-top:12px;justify-content:flex-end;font-size:12px;color:var(--muted)}
+/* ---------- 设置 / 关于 ---------- */
+.settings{max-width:740px}
+.set-card{display:flex;align-items:center;gap:14px;padding:16px 18px;margin-bottom:12px}
+.set-card .ico{width:40px;height:40px;border-radius:12px;background:#E8F0E2;color:var(--green2);display:flex;align-items:center;justify-content:center;font-size:16px;flex:none}
+.set-card .mid{flex:1}
+.set-card .mid b{font-size:14px;color:var(--green)}
+.set-card .mid small{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+.about{max-width:620px;text-align:center;margin:44px auto 0}
+.about .logo{width:86px;height:86px;border-radius:50% 50% 14px 14px;background:linear-gradient(160deg,var(--green2),var(--green));display:flex;align-items:center;justify-content:center;color:#EAF2E6;font-size:32px;font-weight:800;margin:0 auto 16px;box-shadow:0 12px 30px rgba(30,60,40,.25)}
+.about h1{font-size:26px;font-weight:800;color:var(--green)}
+.about .ver{color:var(--muted);font-size:13px;margin:6px 0 20px}
+.about .decl{padding:18px;text-align:left;font-size:13px;line-height:1.85;color:var(--muted)}
+.about .links{display:flex;justify-content:center;gap:12px;margin-top:18px}
+/* ---------- 弹窗 ---------- */
+.overlay{position:absolute;inset:0;background:rgba(31,61,43,.38);display:none;align-items:center;justify-content:center;z-index:50}
+.overlay.show{display:flex}
+.modal{width:560px;background:var(--card);border-radius:18px;border:1px solid var(--line);box-shadow:0 26px 80px rgba(20,40,25,.35);overflow:hidden}
+.modal-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--line)}
+.modal-head b{font-size:15px;color:var(--green)}
+.modal-close{width:28px;height:28px;border:none;border-radius:9px;background:#EFEADB;cursor:pointer;color:var(--muted)}
+.modal-body{padding:20px;max-height:68vh;overflow:auto}
+.modal-foot{display:flex;justify-content:flex-end;gap:10px;padding:14px 20px;border-top:1px solid var(--line);background:#EFEADB}
+.seg{display:flex;background:#E8E2D0;border:1px solid var(--line);border-radius:12px;padding:3px;margin-bottom:15px}
+.seg button{flex:1;height:30px;border:none;border-radius:9px;background:transparent;font-size:13px;cursor:pointer;color:var(--muted)}
+.seg button.on{background:#fff;color:var(--green2);font-weight:700;box-shadow:0 1px 4px rgba(60,80,50,.12)}
+.run-options{display:none}
+.run-options.show{display:block}
+.opt-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.opt-card{border:1px solid var(--line);border-radius:13px;padding:14px;cursor:pointer;background:#fff}
+.opt-card.on{border-color:var(--sage);background:#E8F0E2}
+.opt-card b{font-size:13.5px;color:var(--green2)}
+.opt-card small{display:block;color:var(--muted);font-size:11.5px;margin-top:5px;line-height:1.5}
+/* ---------- 状态栏 ---------- */
+.statusbar{height:32px;background:var(--green);color:#C9DCC4;display:flex;align-items:center;gap:18px;padding:0 22px;font-size:11.5px;flex:none}
+.statusbar .live{display:flex;align-items:center;gap:6px;color:#BFE3B8}
+.statusbar .live i{width:7px;height:7px;border-radius:50%;background:var(--sage)}
+.sw{display:inline-block;width:12px;height:12px;border-radius:50%;margin-left:4px;vertical-align:middle}
+</style>
+</head>
+<body>
+<div class="desktop">
+  <!-- 顶栏 -->
+  <header class="titlebar">
+    <div class="brand"><i></i>Glintree 森林工作台</div>
+    <input class="search" placeholder="搜索任务、字段、网址...">
+    <div class="win"><span>−</span><span>□</span><span>×</span></div>
+  </header>
+
+  <div class="body">
+    <!-- 侧边栏 -->
+    <aside class="sidebar">
+      <div class="side-logo"><i></i>Glintree</div>
+      <nav class="nav">
+        <a data-page="home" class="on"><span class="ic">⌂</span>首页</a>
+        <a data-page="editor"><span class="ic">◈</span>任务编排</a>
+        <a data-page="tasks"><span class="ic">▤</span>任务管理</a>
+        <a data-page="data"><span class="ic">☷</span>数据查看</a>
+        <a data-page="settings"><span class="ic">⚙</span>设置</a>
+        <a data-page="about"><span class="ic">ℹ</span>关于</a>
+      </nav>
+      <div class="foot">🌿 运行正常 · v1.9.0<br>本地数据库 · SQLite</div>
+    </aside>
+
+    <main>
+      <!-- ============ 首页 ============ -->
+      <section class="page on" id="home">
+        <div class="container">
+          <div class="hero">
+            <div class="copy">
+              <h1>无需编程的数据采集工具</h1>
+              <p>输入网址，编排流程，一键采集到本地数据库</p>
+              <div class="herobtn">
+                <input class="input" placeholder="https://www.example.com">
+                <button class="btn primary" onclick="go('editor')">新建任务</button>
+              </div>
+            </div>
+            <div class="art">🌳</div>
+          </div>
+          <div class="stats">
+            <div class="card stat"><b>12</b><span>全部任务</span></div>
+            <div class="card stat"><b>3</b><span>运行中</span></div>
+            <div class="card stat"><b>8,642</b><span>已采集数据</span></div>
+            <div class="card stat"><b>98%</b><span>成功率</span></div>
+          </div>
+          <div class="two-col">
+            <div class="card">
+              <div class="panel-head"><b>最近任务</b><button class="btn sm" onclick="go('tasks')">查看全部</button></div>
+              <div class="panel-body">
+                <div class="rtask"><span class="ico">◈</span><div class="mid"><b>新品价格采集</b><small>最后编辑 2026-08-08 10:24</small></div><span class="tag run">运行中</span></div>
+                <div class="rtask"><span class="ico">▤</span><div class="mid"><b>电商评论抓取</b><small>最后编辑 2026-08-07 18:02</small></div><span class="tag ok">已完成</span></div>
+                <div class="rtask"><span class="ico">☷</span><div class="mid"><b>竞品价格监控</b><small>最后编辑 2026-08-06 09:41</small></div><span class="tag stop">已停止</span></div>
+                <div class="rtask"><span class="ico">⌂</span><div class="mid"><b>行业资讯聚合</b><small>最后编辑 2026-08-05 15:17</small></div><span class="tag ok">已完成</span></div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="panel-head"><b>使用技巧</b></div>
+              <div style="padding:8px">
+                <div class="tiprow"><b>01</b><span>拖拽组合流程，支持循环、判断与翻页。</span></div>
+                <div class="tiprow"><b>02</b><span>智能提示模式，点击网页元素即生成规则。</span></div>
+                <div class="tiprow"><b>03</b><span>一键导出 Excel / CSV，支持字段批量下载。</span></div>
+                <div class="tiprow"><b>04</b><span>定时启动支持循环周期采集。</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 任务编排 ============ -->
+      <section class="page" id="editor">
+        <div class="editor">
+          <div class="card">
+            <div class="flow-head"><b>流程步骤</b><span style="font-size:11px;color:var(--muted)">共 5 步</span></div>
+            <div class="flow-add"><span>＋ 打开网页</span><span>＋ 点击元素</span><span>＋ 提取数据</span><span>＋ 输入文字</span><span>＋ 循环</span><span>＋ 鼠标</span></div>
+            <div class="flow-list">
+              <div class="fstep on"><span class="no">1</span><div><b>打开网页</b><small>https://www.example.com/list</small></div></div>
+              <div class="fconn"></div>
+              <div class="fstep"><span class="no">2</span><div><b>循环：网址列表</b><small>共 3 条地址</small></div></div>
+              <div class="fconn"></div>
+              <div class="fstep"><span class="no">3</span><div><b>点击元素</b><small>A · 商品链接</small></div></div>
+              <div class="fconn"></div>
+              <div class="fstep"><span class="no">4</span><div><b>提取数据</b><small>字段_1 / 字段_2 / 字段_3</small></div></div>
+              <div class="fconn"></div>
+              <div class="fstep"><span class="no">5</span><div><b>结束循环</b></div></div>
+            </div>
+          </div>
+          <div class="card browser">
+            <div class="addrbar"><span class="lock">●</span><input class="input" value="https://www.example.com/list"><button class="btn sm">刷新</button></div>
+            <div class="browser-body">
+              <h2>商品列表</h2>
+              <div class="crumb">首页 / 数码 / 新品</div>
+              <div class="goods">
+                <div class="good"><div class="ph"></div><b>无线降噪耳机</b><span>¥ 899 · 已采集 128 条</span></div>
+                <div class="good"><div class="ph"></div><b>智能手表 Pro</b><span>¥ 1,299 · 已采集 86 条</span></div>
+                <div class="good"><div class="ph"></div><b>便携投影仪</b><span>¥ 2,099 · 已采集 54 条</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="props-head"><b>属性设置</b><span class="tag run">打开网页</span></div>
+            <div class="props-body">
+              <div class="group-label">基本信息</div>
+              <div class="form-row"><label>操作名称</label><input class="input" value="打开网页"></div>
+              <div class="form-row"><label>网址</label><input class="input" value="https://www.example.com/list"></div>
+              <div class="form-row"><label>超时（秒）</label><input class="input" value="10"></div>
+              <div class="group-label">高级选项</div>
+              <div class="form-row"><label>执行前等待</label><input class="input" value="0 秒"></div>
+              <label class="check"><input type="checkbox" checked> 使用循环</label>
+              <label class="check"><input type="checkbox"> 打开网页前清理缓存</label>
+              <label class="check"><input type="checkbox"> 自定义 Cookie</label>
+              <label class="check"><input type="checkbox"> 页面加载后滚动</label>
+              <div class="group-label">操作</div>
+              <button class="btn primary" style="width:100%">保存属性</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 任务管理 ============ -->
+      <section class="page" id="tasks">
+        <div class="container">
+          <div class="section-title"><h2>任务管理</h2><span>管理、编辑、导出你的采集任务</span></div>
+          <div class="table-tool">
+            <select class="input" style="width:150px"><option>默认组</option><option>价格监控组</option><option>资讯组</option></select>
+            <button class="btn">刷新</button>
+            <button class="btn">导入任务</button>
+            <span style="flex:1"></span>
+            <button class="btn primary" onclick="go('editor')">＋ 新建任务</button>
+          </div>
+          <div class="card table-card">
+            <div class="thead"><span>序号</span><span>任务名</span><span>采集状态</span><span>任务组</span><span>最近编辑时间</span><span>操作</span></div>
+            <div class="trow"><span>1</span><span class="taskname"><b>新品价格采集</b><small>code482913</small></span><span><span class="tag run">运行中 · 128 条</span></span><span>默认组</span><span>2026-08-08 10:24</span><span class="ops"><button class="dot-btn">⋯</button></span></div>
+            <div class="trow"><span>2</span><span class="taskname"><b>电商评论抓取</b><small>code103947</small></span><span><span class="tag ok">已完成 · 2,305 条</span></span><span>默认组</span><span>2026-08-07 18:02</span><span class="ops"><button class="dot-btn">⋯</button></span></div>
+            <div class="trow"><span>3</span><span class="taskname"><b>竞品价格监控</b><small>code771201</small></span><span><span class="tag stop">已停止 · 486 条</span></span><span>价格监控组</span><span>2026-08-06 09:41</span><span class="ops"><button class="dot-btn">⋯</button></span></div>
+            <div class="trow"><span>4</span><span class="taskname"><b>行业资讯聚合</b><small>code551830</small></span><span><span class="tag ok">已完成 · 5,723 条</span></span><span>资讯组</span><span>2026-08-05 15:17</span><span class="ops"><button class="dot-btn">⋯</button></span></div>
+            <div class="trow"><span>5</span><span class="taskname"><b>图书销量统计</b><small>code204861</small></span><span><span class="tag stop">未运行</span></span><span>默认组</span><span>2026-08-03 11:09</span><span class="ops"><button class="dot-btn">⋯</button></span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 数据查看 ============ -->
+      <section class="page" id="data">
+        <div class="container data-col">
+          <div class="section-title"><h2>数据查看</h2><span>新品价格采集 · code482913</span></div>
+          <div class="data-tool">
+            <span style="font-size:13px">查看数据：</span><b>新品价格采集</b>
+            <span style="flex:1"></span>
+            <button class="btn">刷新</button>
+            <button class="btn">清空</button>
+            <button class="btn primary" onclick="openModal('exportModal')">导出数据</button>
+          </div>
+          <div class="card data-card">
+            <div class="dthead"><span>商品名称</span><span>价格</span><span>来源链接</span><span>采集时间</span></div>
+            <div class="drow"><span>无线降噪耳机</span><span>¥ 899</span><span>https://www.example.com/goods/1</span><span>2026-08-08 10:25:31</span></div>
+            <div class="drow"><span>智能手表 Pro</span><span>¥ 1,299</span><span>https://www.example.com/goods/2</span><span>2026-08-08 10:25:33</span></div>
+            <div class="drow"><span>便携投影仪</span><span>¥ 2,099</span><span>https://www.example.com/goods/3</span><span>2026-08-08 10:25:35</span></div>
+            <div class="drow"><span>机械键盘 87</span><span>¥ 459</span><span>https://www.example.com/goods/4</span><span>2026-08-08 10:25:37</span></div>
+            <div class="drow"><span>4K 显示器</span><span>¥ 1,799</span><span>https://www.example.com/goods/5</span><span>2026-08-08 10:25:40</span></div>
+          </div>
+          <div class="logbar">
+            <div class="lhead"><span>执行日志</span><span style="font-weight:400;color:var(--muted)">最近 3 条</span></div>
+            <div class="lrow">10:25:40 · 提取成功：字段_1/字段_2/字段_3，累计 5 条</div>
+            <div class="lrow">10:25:38 · 点击元素成功：A · 商品链接</div>
+            <div class="lrow">10:25:31 · 打开网页成功：example.com/list</div>
+          </div>
+          <div class="pager"><span>共计 128 条，5 页</span><button class="btn sm">‹</button><span>1</span><button class="btn sm">›</button></div>
+        </div>
+      </section>
+
+      <!-- ============ 设置 ============ -->
+      <section class="page" id="settings">
+        <div class="container settings">
+          <div class="section-title"><h2>设置</h2><span>应用与浏览器偏好</span></div>
+          <div class="card set-card"><span class="ico">↻</span><div class="mid"><b>检查更新</b><small>当前版本 V1.9 · 点击检测最新版本</small></div><button class="btn sm">检查更新</button></div>
+          <div class="card set-card"><span class="ico">☰</span><div class="mid"><b>清空缓存</b><small>清空浏览器缓存、历史记录、登录信息</small></div><button class="btn sm">清空</button></div>
+          <div class="card set-card"><span class="ico">⛓</span><div class="mid"><b>网络代理</b><small>目前支持手动设置 HTTP 代理</small></div><button class="btn sm">配置</button></div>
+          <div class="card set-card"><span class="ico">◐</span><div class="mid"><b>浏览器设置</b><small>图片加载、插件、User-Agent 等任务级选项</small></div><button class="btn sm">打开</button></div>
+          <div class="card set-card"><span class="ico">♞</span><div class="mid"><b>默认 User-Agent</b><small>win10 · Chrome 111</small></div><button class="btn sm">更换</button></div>
+        </div>
+      </section>
+
+      <!-- ============ 关于 ============ -->
+      <section class="page" id="about">
+        <div class="container about">
+          <div class="logo">G</div>
+          <h1>Glintree</h1>
+          <div class="ver">当前版本 V1.9 · QtWebEngine + SQLite</div>
+          <div class="card decl">
+            本产品只是采集数据的工具，我们不对数据版权负责。我们尊重版权，您必须在采集之前联系数据所有者取得授权，任何因数据授权产生的问题由使用者负全部责任。对于数据的使用请严格遵守《中华人民共和国网络安全法》。
+          </div>
+          <div class="links"><button class="btn">开源地址</button><button class="btn">查看更新日志</button><button class="btn wood">退出登录</button></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- 状态栏 -->
+  <footer class="statusbar">
+    <span class="live"><i></i>任务空闲</span>
+    <span>已采集 0 条</span>
+    <span>内存 42%</span>
+    <span style="flex:1"></span>
+    <span>设计令牌：森林绿 <i class="sw" style="background:#1F3D2B"></i> 鼠尾草 <i class="sw" style="background:#A8C3A0"></i> 木色 <i class="sw" style="background:#8B5E3C"></i> · 圆角 16px</span>
+  </footer>
+
+  <!-- 启动设置弹窗 -->
+  <div class="overlay" id="startupModal">
+    <div class="modal">
+      <div class="modal-head"><b>启动设置</b><button class="modal-close" onclick="closeModal('startupModal')">✕</button></div>
+      <div class="modal-body">
+        <div class="seg"><button class="on" onclick="seg(this,'direct')">直接启动</button><button onclick="seg(this,'timed')">定时启动</button></div>
+        <div class="run-options show" id="direct">
+          <label class="check"><input type="checkbox"> 开启无痕浏览器模式</label>
+          <div class="opt-grid">
+            <div class="opt-card on"><b>一次性执行</b><small>按流程执行一遍，结束后停止</small></div>
+            <div class="opt-card"><b>循环执行</b><small>按设定周期反复采集数据</small></div>
+          </div>
+        </div>
+        <div class="run-options" id="timed">
+          <div class="form-row"><label>循环间隔时间</label><input class="input" value="10 分钟"></div>
+          <div class="form-row"><label>循环单次时长（0 表示不限制）</label><input class="input" value="0 分钟"></div>
+          <label class="check"><input type="checkbox"> 开启无痕浏览器模式</label>
+        </div>
+      </div>
+      <div class="modal-foot"><button class="btn" onclick="closeModal('startupModal')">取消</button><button class="btn primary" onclick="closeModal('startupModal')">启动</button></div>
+    </div>
+  </div>
+
+  <!-- 导出数据弹窗 -->
+  <div class="overlay" id="exportModal">
+    <div class="modal" style="width:480px">
+      <div class="modal-head"><b>导出数据</b><button class="modal-close" onclick="closeModal('exportModal')">✕</button></div>
+      <div class="modal-body">
+        <div class="seg"><button class="on" onclick="seg(this,'xlsx')">Excel (xlsx)</button><button onclick="seg(this,'csv')">CSV (csv)</button></div>
+        <div class="run-options show" id="xlsx"><div class="form-row"><label>每一个 Sheet 的最大行数</label><input class="input" value="4000"></div></div>
+        <div class="run-options" id="csv"><div style="font-size:12.5px;color:var(--muted);padding:6px 0 12px">CSV 文件无 Sheet 长度限制，直接输出全部数据。</div></div>
+        <div class="form-row"><label>导出路径</label><input class="input" placeholder="请选择导出文件夹"></div>
+      </div>
+      <div class="modal-foot"><button class="btn" onclick="closeModal('exportModal')">取消</button><button class="btn primary" onclick="closeModal('exportModal')">确定导出</button></div>
+    </div>
+  </div>
+</div>
+
+<script>
+function go(page){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.getElementById(page).classList.add('on');
+  document.querySelectorAll('.nav a[data-page]').forEach(a=>a.classList.toggle('on',a.dataset.page===page));
+}
+document.querySelectorAll('.nav a[data-page]').forEach(a=>a.addEventListener('click',()=>go(a.dataset.page)));
+document.querySelectorAll('.flow-add span').forEach(s=>s.addEventListener('click',function(){this.style.borderColor='var(--sage)';this.style.color='var(--green2)';this.style.background='#E8F0E2';}));
+function openModal(id){document.getElementById(id).classList.add('show');}
+function closeModal(id){document.getElementById(id).classList.remove('show');}
+function seg(btn,id){
+  btn.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
+  document.querySelectorAll('.run-options').forEach(r=>r.classList.remove('show'));
+  document.getElementById(id).classList.add('show');
+}
+</script>
+</body>
+</html>

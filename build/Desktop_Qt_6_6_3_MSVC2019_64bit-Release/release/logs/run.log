@@ -1,0 +1,8 @@
+INFO  2024-10-30T11:15:47.528 initLogger() success logDir= "E:/codes/C++/QT/Glintree/build/Desktop_Qt_6_6_3_MSVC2019_64bit-Release/release/logs" 
+INFO  2024-10-30T11:15:47.529 "Glintree V1.9,qwebengine V6.6.3 chromium V112.0.5615.213 chromiumSP V122.0.6261.128" 
+INFO  2024-10-30T11:15:47.529 MainWindow::MainWindow() screens.size= 1 ,screenW= 1920 ,screenH= 1080 ,initW= 1080 ,initH= 720 
+INFO  2024-10-30T11:15:47.533 Database.cpp succee to connect sqlite 
+INFO  2024-10-30T11:15:47.806 Database::setFinger finger= "REVTS1RPUC05T1JCNjlJLTUwMTAyYmQyLTE0N2QtNDg4Mi04NDI1LTE2NmNhOTljMGY5Mw==" 
+INFO  2024-10-30T11:15:50.432 ApiCheckVersion::checkVersion url= "*/checkVersion?version=1.9&currentCpuArchitecture=x86_64&kernelVersion=10.0.19045&bootUniqueId=&machineUniqueId=50102bd2-147d-4882-8425-166ca99c0f93&productType=windows&machineHostName=DESKTOP-9ORB69I&buildAbi=x86_64-little_endian-llp64&finger=REVTS1RPUC05T1JCNjlJLTUwMTAyYmQyLTE0N2QtNDg4Mi04NDI1LTE2NmNhOTljMGY5Mw==&kernelType=winnt&prettyProductName=Windows 10 Version 22H2&buildCpuArchitecture=x86_64&productVersion=10" 
+INFO  2024-10-30T11:15:50.471 ApiCheckVersion::onRequestFinished state= false ,msg= "Protocol \"\" is unknown" 
+INFO  2024-10-30T11:15:51.134 MainWindow::~MainWindow() 
